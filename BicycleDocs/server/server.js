@@ -23,7 +23,7 @@ var subscriptionRoute= require('./routes/subscriptionRoute')
 
 var seasonsRoute= require('./routes/seasonsRoute')
 
-const {application} = require("express");  //Change
+const {application} = require("express");  
 
 
 
