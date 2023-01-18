@@ -1,6 +1,7 @@
 const express= require("express");
 const router= express.Router();
-const stripe= require("stripe")("sk_test_51KOQoOFGARc0uD7XDVGzXFiyibXuB9F6lXNgOfdJnKhkEjt4gDUd4Igr9kC6U6dMDpjlqIul8Sh4Qdsltg5hW1An00GXJSgs5I");
+require('dotenv').config();
+const stripe= require("stripe")(process.env.STRIPEKEY);
 
 router.post('/create-subscription', async(req, res)=>{
     try{

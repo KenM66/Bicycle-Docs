@@ -5,11 +5,14 @@ const {hashPassword, comparePassword}= require ('../encryption/hashedPassword')
 const express= require('express');
 
 const router= express.Router();
+require('dotenv').config();
 
 const User = require('../models/userModel')
-const stripe= require("stripe")("sk_test_51KOQoOFGARc0uD7XDVGzXFiyibXuB9F6lXNgOfdJnKhkEjt4gDUd4Igr9kC6U6dMDpjlqIul8Sh4Qdsltg5hW1An00GXJSgs5I");
+const stripe= require("stripe")(process.env.STRIPEKEY);
 
 const nodemailer= require("nodemailer");
+
+
 
 
 
@@ -45,8 +48,8 @@ router.post('/adduser', async (req, res)=>{
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth:{
-                    user: "milotakw@g.cofc.edu", 
-                    pass: 'bcgvgzkcwygtsmoz'
+                    user: process.env.EMAIL, 
+                    pass: process.env.PASS
                 }
             });
         
@@ -58,7 +61,7 @@ router.post('/adduser', async (req, res)=>{
            
         
             const mailOptions= {
-                from: 'milotakw@g.cofc.edu',
+                from: process.env.EMAIL,
                 to: user.email,
                 subject: "Welcome to Bicycle Docs",
                 text: "Thank you for joining Bicycle Docs.   You may access your account now!" +
