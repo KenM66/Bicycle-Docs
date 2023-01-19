@@ -42,6 +42,10 @@ const {currentSeasons, loading, error}= getCurrentSeasonsState;
 const [activeSeasons, setActiveSeasons]= useState();
 
 const [pastSeasons, setPastSeasons] = useState(); 
+
+
+
+
 console.log(activeSeasons);
 console.log(currentSeasons);
 
@@ -53,7 +57,7 @@ useEffect(()=>{
   const seasons2= currentSeasons.filter(season=> Date.parse(season.end)< Date.now());
   
   console.log(seasons);
-  //console.log(new Date(Date.now()).getMonth()+1)
+  
   setActiveSeasons(seasons);
   setPastSeasons(seasons2);
   }
@@ -65,8 +69,7 @@ useEffect(()=>{
     dispatch(getActiveSeasonsBySchool(school));
 },[school])
  
-    
-//console.log(currentSeasons);
+
 
  
    
@@ -109,15 +112,32 @@ useEffect(()=>{
     return "Closed";
   }
 
-  const test=()=>{
-    console.log("This Is Working!!!! YAY!")
+  const test=(id)=>{
+    console.log(id)
+   
   }
 
+  // const showSeasonDetailsScreen=(name, status, complete)=>{
+  //     setDetailedInfo(true);
+  //     setSchoolName(name);
+  //     setSchoolStatus(status);
+  //     setCompleteRegistrations(complete);
+  //     console.log('details screen works');
+      
+  // }
+
+
+
+
   return (
+   
     <div>
       <br />
       <br />
       <br />
+
+     
+      <div>
 
       <h1> Current Seasons</h1>
       <div
@@ -129,28 +149,11 @@ useEffect(()=>{
           overflowX: "scroll",
         }}
       >
-        {/* <SeasonCard
-          name="2022-2023 School Year"
-          start="09/01/2022"
-          end="06/01/2022"
-          price="12.99"
-          status="Open"
-          complete="4"
-          incomplete="5"
-        />
-        <SeasonCard
-          name="2022-2023"
-          start="09/01/2022"
-          end="06/01/2022"
-          price="12.99"
-          status="Open"
-          complete="4"
-          incomplete="5"
-        /> */}
+      
         {loading && (<Loader/>)}
         {error && <Error error= "Something went wrong"/>}
         {activeSeasons && (activeSeasons.map(season=>{
-          return <div onClick={test}><SeasonCard
+          return <div onClick={()=>test(season._id)}><SeasonCard
             name= {season.name}
             start= {formatDate(season.start)}
             end= {formatDate(season.end)}
@@ -184,7 +187,7 @@ useEffect(()=>{
 {loading && (<Loader/>)}
         {error && <Error error= "Something went wrong"/>}
         {pastSeasons && (pastSeasons.map(season=>{
-          return <div onClick={test}><SeasonCard
+          return <div onClick={test(season)}><SeasonCard
             name= {season.name}
             start= {formatDate(season.start)}
             end= {formatDate(season.end)}
@@ -199,11 +202,14 @@ useEffect(()=>{
 
             
           </div>)}
+      
 
-          
+          </div>
+
 
     
-    </div>
+    
+       </div>
   );
 };
 

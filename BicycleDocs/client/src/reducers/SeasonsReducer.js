@@ -20,3 +20,24 @@ export const getCurrentSeasonsBySchoolReducer=(state={}, action)=>{
     }
 
 }
+
+export const getSeasonByIdReducer=(state={}, action)=>{
+
+    switch(action.type){
+        case 'GET_SEASONBYID_REQUEST' : return{
+            ...state,
+            loading: true
+        }
+        case 'GET_SEASONBYID_SUCCESS': return {
+            ...state, 
+            loading: false
+        }
+        case 'GET_SEASONBYID_FAILED': return {
+            ...state,
+            loading: false, 
+            error: true
+        }
+        default: return{state}
+    }
+
+}

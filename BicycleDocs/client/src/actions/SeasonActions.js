@@ -19,3 +19,11 @@ export const getActiveSeasonsBySchool=(school)=> (dispatch, getState)=>{
         dispatch({type: 'GET_CURRENTSEASONSBYSCHOOL_FAILED', payload: err})
     })
 }
+
+export const getSeasonById= (id)=> (dispatch, getState)=>{
+
+    dispatch({type: 'GET_SEASONBYID_REQUEST'})
+
+   
+
+}

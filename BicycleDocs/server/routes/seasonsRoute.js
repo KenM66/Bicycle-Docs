@@ -8,6 +8,17 @@ const router= express.Router();
 const Season= require('../models/seasonModel');
 const School= require('../models/schoolModel');
 
+router.get('/getseasonbyid/:id', (req,res)=>{
+    Season.find({"_id": req.params.id}, (err, docs)=>{
+        if(!err){
+            res.send(docs);
+        }
+        else{
+            return res.status(400).json({message: 'Something went wrong'})
+        }
+    })
+})
+
 router.get('/getseasonsbyschool/:id', (req, res)=>{
     Season.find({"school": {_id: req.params.id}}, (err, docs)=>{
         if(!err){
