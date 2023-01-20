@@ -22,7 +22,19 @@ export const getActiveSeasonsBySchool=(school)=> (dispatch, getState)=>{
 
 export const getSeasonById= (id)=> (dispatch, getState)=>{
 
+    console.log(id)
+
     dispatch({type: 'GET_SEASONBYID_REQUEST'})
+
+    axios.get(`http://localhost:5000/api/seasons/getseasonbyid/${id}`).then(res=>{
+        console.log(res);
+
+        dispatch({type: 'GET_SEASONBYID_SUCCESS', payload: res.data}) 
+
+        }).catch(err=>{
+            console.log(err);
+            dispatch({type: 'GET_SEASONBYID_FAILED', payload: err})
+        })
 
    
 

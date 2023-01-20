@@ -30,7 +30,8 @@ export const getSeasonByIdReducer=(state={}, action)=>{
         }
         case 'GET_SEASONBYID_SUCCESS': return {
             ...state, 
-            loading: false
+            loading: false,
+            season: action.payload
         }
         case 'GET_SEASONBYID_FAILED': return {
             ...state,

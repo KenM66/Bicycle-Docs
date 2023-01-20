@@ -112,8 +112,9 @@ useEffect(()=>{
     return "Closed";
   }
 
-  const test=(id)=>{
-    console.log(id)
+  const routeToSeason=(id)=>{
+    console.log(id);
+    window.location.href= `/season/${id}`
    
   }
 
@@ -142,18 +143,18 @@ useEffect(()=>{
       <h1> Current Seasons</h1>
       <div
         style={{
-          backgroundColor: "gray",
+          backgroundColor: "green",
           width: "1500px",
-          height: "200px",
+          height: "160px",
           margin: "0 auto",
-          overflowX: "scroll",
+          overflowY: "scroll",
         }}
       >
       
         {loading && (<Loader/>)}
         {error && <Error error= "Something went wrong"/>}
         {activeSeasons && (activeSeasons.map(season=>{
-          return <div onClick={()=>test(season._id)}><SeasonCard
+          return <div onClick={()=>routeToSeason(season._id)}><SeasonCard
             name= {season.name}
             start= {formatDate(season.start)}
             end= {formatDate(season.end)}
@@ -178,16 +179,18 @@ useEffect(()=>{
 
       {isChecked&& <h1>Past Seasons</h1>}
 
-      {(isChecked&& <div style={{backgroundColor: "gray",
-          width: "1500px",
-          height: "200px",
-          margin: "0 auto",
-          overflowX: "scroll"}}>
+      {(isChecked&& <div style={{backgroundColor: "red",
+           width: "1500px",
+           height: "160px",
+           margin: "0 auto",
+         
+          overflowY: "scroll"
+          }}>
 
 {loading && (<Loader/>)}
         {error && <Error error= "Something went wrong"/>}
         {pastSeasons && (pastSeasons.map(season=>{
-          return <div onClick={test(season)}><SeasonCard
+          return <div onClick={()=> routeToSeason(season._id)}><SeasonCard
             name= {season.name}
             start= {formatDate(season.start)}
             end= {formatDate(season.end)}
