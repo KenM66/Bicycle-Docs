@@ -15,6 +15,7 @@
     "font-awesome": "^4.7.0",
     "formik": "^2.2.9",
     "react": "^17.0.2",
+    "react-datepicker": "^4.8.0",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.20.5",
     "react-redux": "^7.2.6",
@@ -37,8 +38,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-
-
   "browserslist": {
     "production": [
       ">0.2%",

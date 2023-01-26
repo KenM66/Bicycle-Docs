@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getSchoolByUserId } from './actions/SchoolActions';
 import SeasonInfoScreen from './screens/SeasonInfoScreen';
+import NewSeasonScreen from './screens/NewSeasonScreen';
 
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
             <Route path= '/school-login' element= {<SchoolLoginScreen/>}/>
             <Route path= '/seasons' element={<SeasonsScreen/>}/>
             <Route path='/season/:id' element={(<SeasonInfoScreen/>)}/>
+            <Route path= '/seasons/new-season' element={(<NewSeasonScreen/>)}/>
           </Routes>
         </BrowserRouter>
 

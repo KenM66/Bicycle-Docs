@@ -118,6 +118,10 @@ useEffect(()=>{
    
   }
 
+  const createNewSeason=()=>{
+    window.location.href= '/seasons/new-season'
+  }
+
   // const showSeasonDetailsScreen=(name, status, complete)=>{
   //     setDetailedInfo(true);
   //     setSchoolName(name);
@@ -206,10 +210,13 @@ useEffect(()=>{
             
           </div>)}
       
+         
 
           </div>
+          <br/>
+          <br/>
 
-
+          <button onClick={createNewSeason} className="btn btn-success">Create New Season</button>
     
     
        </div>

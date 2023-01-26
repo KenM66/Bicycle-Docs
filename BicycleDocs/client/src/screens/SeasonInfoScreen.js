@@ -41,7 +41,7 @@ const SeasonInfoScreen = ()=>{
 
 
     const statusColorOpen={
-     color: '#66FF00'    
+     color: 'green'    
     }
 
     const statusColorClosed={
@@ -91,7 +91,7 @@ const SeasonInfoScreen = ()=>{
     
 
     return (
-        <div style={{backgroundColor: "green"}}>
+        <div style={{backgroundColor: "#40E0D0"}}>
 
             {loading &&(<Loader/>)}
             {error &&(<Error/>)}
@@ -102,7 +102,7 @@ const SeasonInfoScreen = ()=>{
             <button className="btn btn-primary">Edit Season</button>
             <br/>
             <br/>
-            <h4 style={{color: "white"}}>Open Registrations</h4>
+            <h4 style={{color: "brown"}}>Open Registrations</h4>
             <div style= {{backgroundColor: "gray", 
                 width: "1000px", 
                 height: "100px", 
@@ -115,7 +115,7 @@ const SeasonInfoScreen = ()=>{
             <br/>
             
             <div className= "flexbox-container" style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
-            <h2 style={{color: "white"}}>Registration Status: <span style={currentSeason.isOpen? statusColorOpen: statusColorClosed}>{currentSeason.isOpen? "Open": "Closed"}</span></h2>
+            <h2 style={{color: "brown"}}>Registration Status: <span style={currentSeason.isOpen? statusColorOpen: statusColorClosed}>{currentSeason.isOpen? "Open": "Closed"}</span></h2>
             &nbsp;
             &nbsp;
             <button style={currentSeason.isOpen? buttonColorClose: buttonColorOpen}>{currentSeason.isOpen? "Close": "Open"}</button>
@@ -126,34 +126,34 @@ const SeasonInfoScreen = ()=>{
             <br/>
 
             <div className= "flexbox-container" style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
-                <h2 style={{color: "white"}}>Start: <span style={{color: "black"}}>{formatDate(currentSeason.start)}</span></h2>
+                <h2 style={{color: "brown"}}>Start: <span style={{color: "black"}}>{formatDate(currentSeason.start)}</span></h2>
                 &nbsp;
                 &nbsp;
-                <h2 style={{color: "white"}}>End: <span style={{color: "black"}}>{formatDate(currentSeason.end)}</span></h2>
+                <h2 style={{color: "brown"}}>End: <span style={{color: "black"}}>{formatDate(currentSeason.end)}</span></h2>
                 &nbsp;
                 &nbsp;
-                <h2 style={{color: "white"}}>Complete Registrations: <span style={{color: "black"}}>12</span></h2>
+                <h2 style={{color: "brown"}}>Complete Registrations: <span style={{color: "black"}}>12</span></h2>
             </div>
             <br/>
                 <h1 style={{color: "blue"}}>Search Bicycle Information</h1>
                 <div className="flexbox-container" style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
                 <input type="text" value={searchValue} onChange={(e)=> setSearchValue(e.target.value)}/> 
                  &nbsp;
-                 <button onClick={testButton}>Search</button>
+                 <button className="btn btn-dark"  onClick={testButton}>Search</button>
                 </div>
                     <input type="radio" name="searchBy" value="Sticker #" id="sticker" checked= "true"/>
                     &nbsp;
-                     <label htmlFor="sticker" style={{color: "white"}}>Sticker #</label>
+                     <label htmlFor="sticker" style={{color: "brown"}}>Sticker #</label>
                      &nbsp;
                      &nbsp;
                     <input type="radio" name="searchBy" value="Last Name" id="lastName" />
                     &nbsp;
-                     <label htmlFor="lastName" style={{color: "white"}}>Last Name</label>
+                     <label htmlFor="lastName" style={{color: "brown"}}>Last Name</label>
                      &nbsp;
                      &nbsp;
                      <input type="radio" name="searchBy" value="Serial #" id="serial" />
                      &nbsp;
-                    <label htmlFor="serial" style={{color: "white"}}>Serial #</label>
+                    <label htmlFor="serial" style={{color: "brown"}}>Serial #</label>
                 
                
                 <br/>
