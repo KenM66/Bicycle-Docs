@@ -42,3 +42,25 @@ export const getSeasonByIdReducer=(state={}, action)=>{
     }
 
 }
+
+export const createNewSeasonReducer= (state={}, action)=>{
+
+    switch(action.type){
+        case 'CREATE_SEASON_REQUEST': return{
+            ...state, 
+            loading: true
+        }
+        case 'CREATE_SEASON_SUCCESS': return{
+            ...state, 
+            loading: false, 
+            success: true
+        }
+        case 'CREATE_SEASON_FAILED': return{
+            ...state, 
+            loading: false, 
+            error: "Season Registration Failed."
+        }
+        default: return state
+    }
+
+}

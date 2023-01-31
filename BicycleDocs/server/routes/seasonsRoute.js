@@ -31,9 +31,20 @@ router.get('/getseasonsbyschool/:id', (req, res)=>{
 })
 
 router.post('/addseason', async (req, res)=>{
-    const season= req.body
+    const season= req.body.season 
+    //const school= req.body.school
 
-    const school= await School.findOne({user: {'_id': req.body.userId}});
+    console.log(season);
+
+
+    //console.log(req.body.userId);
+
+   //const school= await School.findOne({user: {'_id': req.body.userId}});
+
+   const school= JSON.parse(req.body.school);
+   
+
+   console.log(req.body.school);
 
 
     const seasonModel= new Season({

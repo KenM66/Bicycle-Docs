@@ -39,3 +39,17 @@ export const getSeasonById= (id)=> (dispatch, getState)=>{
    
 
 }
+
+export const createNewSeason= (season, school)=> dispatch=>{
+    dispatch({type: 'CREATE_SEASON_REQUEST'})
+
+    axios.post('http://localhost:5000/api/seasons/addseason', {season: season, school: school})
+    .then(res=>{
+        dispatch({type: 'CREATE_SEASON_SUCCESS'})
+        console.log(res);
+    })
+    .catch(err=>{
+        dispatch({type: 'CREATE_SEASON_FAILED'})
+        console.log(err);
+    })
+}   

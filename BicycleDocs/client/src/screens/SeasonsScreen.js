@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { getActiveSeasonsBySchool } from "../actions/SeasonActions";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
+import {push} from 'react-router-redux'
+
 
 
 
@@ -118,18 +120,8 @@ useEffect(()=>{
    
   }
 
-  const createNewSeason=()=>{
-    window.location.href= '/seasons/new-season'
-  }
 
-  // const showSeasonDetailsScreen=(name, status, complete)=>{
-  //     setDetailedInfo(true);
-  //     setSchoolName(name);
-  //     setSchoolStatus(status);
-  //     setCompleteRegistrations(complete);
-  //     console.log('details screen works');
-      
-  // }
+
 
 
 
@@ -216,7 +208,8 @@ useEffect(()=>{
           <br/>
           <br/>
 
-          <button onClick={createNewSeason} className="btn btn-success">Create New Season</button>
+        
+          <a href= 'seasons/new-season'>Create New Season</a>
     
     
        </div>
