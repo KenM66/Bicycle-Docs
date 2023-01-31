@@ -90,6 +90,27 @@ router.put('/toggle-registration-status', async (req, res)=>{
 })
 
 router.put('/update-season/:id', async (req, res)=>{
+    const seasonId= req.params.id;
+    const seasonName= req.body.season.name; 
+    const seasonStart= req.body.season.start; 
+    const seasonEnd= req.body.season.end; 
+    const seasonPrice= req.body.season.price; 
+    const seasonMax= req.body.season.max;
+
+    Season.findByIdAndUpdate(seasonId, {
+        name: seasonName, 
+        start: seasonStart, 
+        end: seasonEnd, 
+        price: seasonPrice, 
+        maximum: seasonMax
+    }, (err)=>{
+        if(err){
+            res.status(400).json({message: "Season not updated successfully"})
+        }
+        else{
+            res.send("Season updated successfully");
+        }
+    })
     
 })
 
