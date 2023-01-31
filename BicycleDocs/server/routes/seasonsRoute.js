@@ -72,4 +72,25 @@ router.post('/addseason', async (req, res)=>{
 
 })
 
+router.put('/toggle-registration-status', async (req, res)=>{
+        const seasonId= req.body._id;
+        const status= req.body.isOpen; 
+
+        Season.findByIdAndUpdate(seasonId, {
+            isOpen: status
+        }, (err)=>{
+            if(err){
+            res.status(400).json({message: "Status not properly updated"})
+            }
+            else{
+                res.send("Status update successfully")
+            }
+        })
+
+})
+
+router.put('/update-season/:id', async (req, res)=>{
+    
+})
+
 module.exports= router;

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom"
@@ -21,10 +22,12 @@ const SeasonInfoScreen = ()=>{
     const [currentSeason, setCurrentSeason]= useState();
     const [searchValue, setSearchValue]= useState();
     const [radioValue, setRadioValue]= useState();
+    const [regStatus, setRegStatus]= useState();
 
     useEffect(()=>{
         if(season){
             setCurrentSeason(season[0]);
+            setRegStatus(season[0].isOpen);
         }
     })
 
@@ -88,6 +91,33 @@ const SeasonInfoScreen = ()=>{
         console.log(searchValue);
       }
 
+      const toggleStatus=()=>{
+        const id= currentSeason._id;
+        const status= !regStatus;
+        console.log(status);
+        console.log(id);
+
+
+        console.log(currentSeason.end);
+
+        if(Date.parse(currentSeason.end) <= new Date()){
+            window.alert("You cannot open registration on a closed season!");
+            return;
+        }
+
+        axios.put('http://localhost:5000/api/seasons/toggle-registration-status', {_id: id, isOpen: status })
+        .then(res=>{
+            console.log(Date.parse(currentSeason.end)< new Date());
+            console.log(res);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+        setRegStatus(!regStatus);
+        console.log(regStatus);
+        location.reload();
+      }
+
     
 
     return (
@@ -118,7 +148,7 @@ const SeasonInfoScreen = ()=>{
             <h2 style={{color: "brown"}}>Registration Status: <span style={currentSeason.isOpen? statusColorOpen: statusColorClosed}>{currentSeason.isOpen? "Open": "Closed"}</span></h2>
             &nbsp;
             &nbsp;
-            <button style={currentSeason.isOpen? buttonColorClose: buttonColorOpen}>{currentSeason.isOpen? "Close": "Open"}</button>
+            <button onClick={toggleStatus} style={currentSeason.isOpen? buttonColorClose: buttonColorOpen}>{currentSeason.isOpen? "Close": "Open"}</button>
 
 
 
