@@ -12,6 +12,9 @@ import axios from 'axios';
 const UpdateSeason= (props)=>{
 
 
+  
+    console.log(new Date()> props.end)
+
     const [startDate, setStartDate]= useState(props.start);
     const [endDate, setEndDate]= useState(props.end);
     const dispatch= useDispatch();
@@ -32,12 +35,16 @@ const UpdateSeason= (props)=>{
         validationSchema: updateSeasonSchema, 
         onSubmit:(values)=>{
 
+            console.log(endDate);
+
+            console.log(Date.parse(new Date()));
+
             const price= parseFloat(values.price)
 
             const maximum= parseInt(values.maximum);
 
-            const season= {name: values.name, start: startDate, end: endDate, price: price, maximum: maximum, isOpen: new Date()> endDate? props.isOpen: false };
-            
+            const season= {name: values.name, start: startDate, end: endDate, price: price, maximum: maximum, isOpen: Date.parse(new Date())>=endDate? false: props.isOpen };
+            //Date.parse(new Date())>=endDate? false: props.isOpen
             console.log(season);
 
             axios.put(`http://localhost:5000/api/seasons/update-season/${props.id}`, {season: season})

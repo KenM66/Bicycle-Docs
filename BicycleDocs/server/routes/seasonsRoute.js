@@ -96,13 +96,15 @@ router.put('/update-season/:id', async (req, res)=>{
     const seasonEnd= req.body.season.end; 
     const seasonPrice= req.body.season.price; 
     const seasonMax= req.body.season.max;
+    const seasonOpen= req.body.season.isOpen;
 
     Season.findByIdAndUpdate(seasonId, {
         name: seasonName, 
         start: seasonStart, 
         end: seasonEnd, 
         price: seasonPrice, 
-        maximum: seasonMax
+        maximum: seasonMax, 
+        isOpen: seasonOpen
     }, (err)=>{
         if(err){
             res.status(400).json({message: "Season not updated successfully"})
