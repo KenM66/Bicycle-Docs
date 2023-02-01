@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom"
 import { getSeasonById } from "../actions/SeasonActions";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
+import UpdateSeason from "../components/UpdateSeason";
 
 
 const SeasonInfoScreen = ()=>{
@@ -23,6 +24,8 @@ const SeasonInfoScreen = ()=>{
     const [searchValue, setSearchValue]= useState();
     const [radioValue, setRadioValue]= useState();
     const [regStatus, setRegStatus]= useState();
+
+    const [showEdit, setShowEdit]= useState(false);
 
     useEffect(()=>{
         if(season){
@@ -118,6 +121,14 @@ const SeasonInfoScreen = ()=>{
         location.reload();
       }
 
+      const showEditSeason= ()=>{
+            setShowEdit(true);
+      }
+
+      const cancelEdit=()=>{
+         setShowEdit(false);
+      }
+
     
 
     return (
@@ -129,8 +140,12 @@ const SeasonInfoScreen = ()=>{
 
            {currentSeason && (<div>
             <h1 style={{color: 'black'}}>{currentSeason.name}</h1>
-            <button className="btn btn-primary">Edit Season</button>
+            <button className="btn btn-primary" onClick={showEditSeason}>Edit Season</button>
             <br/>
+            <br/>
+            {(showEdit && (<div style={{margin: "0 auto", width: "400px"}}>
+                <UpdateSeason id= {currentSeason._id} name= {currentSeason.name} price= {currentSeason.price} start= {Date.parse(currentSeason.start)} end= {Date.parse(currentSeason.end)} maximum= {currentSeason.maximum} isOpen= {currentSeason.isOpen} onChange={cancelEdit} />
+            </div>))}
             <br/>
             <h4 style={{color: "brown"}}>Open Registrations</h4>
             <div style= {{backgroundColor: "gray", 
