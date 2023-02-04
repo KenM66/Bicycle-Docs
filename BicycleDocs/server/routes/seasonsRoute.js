@@ -57,14 +57,14 @@ router.post('/addseason', async (req, res)=>{
         school: school
     })
 
-    seasonModel.save(err=>{
+    seasonModel.save((err, docs)=>{
         if(err){
             console.log(err);
             return res.status(400).json({message: 'Something went wrong'});
 
         }
         else{
-            res.send("Season added successfully")
+            res.send(docs);
 
         }
     })

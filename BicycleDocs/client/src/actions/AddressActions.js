@@ -3,7 +3,7 @@ import axios from "axios";
 export const getAddressByValues= (address)=> dispatch=>{
     dispatch({type: 'GET_ADDRESSBYVALUES_REQUEST'})
 
-    axios.get('http://localhost:5000/api/addresses/getaddressbyvalues', {address}).then(res=>{
+    axios.post('http://localhost:5000/api/addresses/getaddressbyvalues', {address}).then(res=>{
         console.log(res)
         dispatch({type: 'GET_ADDRESSBYVALUES_SUCCESS'})
     })

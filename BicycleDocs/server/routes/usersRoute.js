@@ -45,6 +45,7 @@ router.post('/adduser', async (req, res)=>{
         }
         else{
             res.send(body)
+            console.log(body);
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth:{
@@ -180,6 +181,17 @@ router.post('/school-login',  async (req, res)=>{
     console.log("This didn't work")
     return res.status(400).json({message: 'Invalid Credentials'})
    }
+ })
+
+ router.get('/user-by-email/:email', async (req, res)=>{
+    await User.findOne({email: req.params.email}, (err, docs)=>{
+        if(err){
+            console.log(err);
+        }
+        else(res.send(docs))
+    }).clone();
+
+
  })
 
 

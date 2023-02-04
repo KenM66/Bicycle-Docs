@@ -5,6 +5,7 @@ import StripeSuccess from '../components/Stripe-success';
 import SchoolRegistrationStepOne from '../components/SchoolRegistrationStepOne';
 import SchoolRegistrationStepTwo from '../components/SchoolRegistrationStepTwo';
 import SchoolRegistrationVerification from '../components/SchoolRegistrationVerification';
+import SchoolRegistrationConfirmed from '../components/SchoolRegistrationConfirmed';
 
  function SchoolRegistrationScreen() {
     return (
@@ -19,7 +20,7 @@ import SchoolRegistrationVerification from '../components/SchoolRegistrationVeri
                 <Step component= {SchoolRegistrationStepOne}/>
                 <Step component= {SchoolRegistrationStepTwo}/>
                 <Step component= {SchoolRegistrationVerification}/>
-                
+                <Step component= {SchoolRegistrationConfirmed}/>
                 <Step component= {PriceCard}/>
                 
             </Steps>

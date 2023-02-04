@@ -7,7 +7,8 @@ export const registerSchoolReducer= (state={}, action )=>{
         case 'SCHOOL_REGISTER_SUCCESS': return{
             ...state, 
             loadingSchool: false, 
-            successSchool: true
+            successSchool: true, 
+            registeredSchool: action.payload
         }
         case 'SCHOOL_REGISTER_FAILED': return{
             ...state, 
