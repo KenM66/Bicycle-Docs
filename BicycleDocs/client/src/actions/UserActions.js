@@ -43,6 +43,8 @@ export const updateEmailConfirmed=(userId)=>(dispatch)=>{
 export const schoolLogin=(user)=> dispatch=>{
     dispatch({type: 'SCHOOL_LOGIN_REQUEST'})
 
+    console.log("User passed in to Action: " + user.email)
+
     axios.post("http://localhost:5000/api/users/school-login", user)
     .then(res=>{
         dispatch({type: 'SCHOOL_LOGIN_SUCCESS'})
@@ -52,6 +54,8 @@ export const schoolLogin=(user)=> dispatch=>{
         
 
         localStorage.setItem('currentUser', JSON.stringify(res.data))
+
+        console.log(res.data);
        
         window.location.href='/'
       

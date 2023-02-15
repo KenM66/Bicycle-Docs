@@ -23,17 +23,32 @@ const SchoolLoginScreen=()=>{
         e.preventDefault()
 
         const user={
-            email: email,
-            password: password,
+            email: email.toLowerCase(),
+            password: password
           
 
         }
 
-        dispatch(schoolLogin(user))
+         console.log(user);
 
-        const currentUser= localStorage.getItem('currentUser');
 
-        console.log(currentUser);
+         var promise= new Promise(function(resolve, reject){
+            dispatch(schoolLogin(user))
+            resolve(true);
+         })
+      
+         const currentUser= null;
+         
+         await promise.then(()=> 
+         
+         currentUser= localStorage.getItem("currentUser")
+         );
+
+        
+
+        
+
+         console.log(currentUser);
 
         dispatch(getSchoolByUserId(currentUser));
 
@@ -50,6 +65,7 @@ const SchoolLoginScreen=()=>{
 
     useEffect(()=>{
         if(localStorage.getItem('currentUser')){
+        
             window.location.href='/'
         }
     })
