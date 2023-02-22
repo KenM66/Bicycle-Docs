@@ -1,6 +1,9 @@
 import React from 'react'
 import {Steps, Step} from "react-step-builder";
 import ParentRegistrationStepOne from '../components/ParentRegistrationStepOne';
+import ParentRegistrationStepTwo from  '../components/ParentRegistrationStepOne';
+import ParentRegistrationStepThree from  '../components/ParentRegistrationStepOne';
+import ParentRegistrationVerification from '../components/ParentRegistrationVerification';
 
 const ParentRegistrationScreen=()=>{
 
@@ -11,6 +14,9 @@ const ParentRegistrationScreen=()=>{
                 <h4>Parent Registration</h4>
                 <Steps>
                     <Step component= {ParentRegistrationStepOne}/>
+                    <Step component= {ParentRegistrationStepTwo}/>
+                    <Step component= {ParentRegistrationStepThree}/>
+                    <Step component= {ParentRegistrationVerification}/>
                 </Steps>
             </div>
         </div>

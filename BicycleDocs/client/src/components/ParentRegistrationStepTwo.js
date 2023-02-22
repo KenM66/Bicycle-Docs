@@ -3,7 +3,7 @@ import React from 'react'
 import * as Yup from 'yup'
 import { FormikContext, useFormik } from 'formik';
 
-const SchoolRegistrationStepTwo=(props)=>{
+const ParentRegistrationStepTwo=(props)=>{
 
 
     const signUpSchema= Yup.object().shape({
@@ -122,4 +122,4 @@ const SchoolRegistrationStepTwo=(props)=>{
 
 }
 
-export default SchoolRegistrationStepTwo;
+export default ParentRegistrationStepTwo;

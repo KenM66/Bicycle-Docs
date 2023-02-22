@@ -17,6 +17,7 @@ import { useEffect } from 'react';
 import { getSchoolByUserId } from './actions/SchoolActions';
 import SeasonInfoScreen from './screens/SeasonInfoScreen';
 import NewSeasonScreen from './screens/NewSeasonScreen';
+import ParentRegistrationScreen from './screens/ParentRegistrationScreen';
 
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
             <Route path= '/seasons' element={<SeasonsScreen/>}/>
             <Route path='/season/:id' element={(<SeasonInfoScreen/>)}/>
             <Route path= '/seasons/new-season' element={(<NewSeasonScreen/>)}/>
+            <Route path= '/parent-registration' element={(<ParentRegistrationScreen/>)}/>
           </Routes>
         </BrowserRouter>
 
