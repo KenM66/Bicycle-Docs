@@ -4,6 +4,9 @@ const router= express.Router();
 const Parent= require('../models/parentModel');
 
 router.post('/add-parent', async (req, res)=>{
+
+    console.log(req.body);
+
     const parent= req.body.parent; 
     const user= req.body.user;
     const address= req.body.address;
@@ -18,7 +21,7 @@ router.post('/add-parent', async (req, res)=>{
 
         })
 
-        parentModel.save(err=>{
+        parentModel.save((err,body)=>{
             if(err){
                 console.log(err);
                 return res.status(400).json({message: "Something went wrong with saving new parent."})
@@ -30,3 +33,5 @@ router.post('/add-parent', async (req, res)=>{
 
 
 })
+
+module.exports= router;

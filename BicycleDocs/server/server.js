@@ -23,6 +23,8 @@ var subscriptionRoute= require('./routes/subscriptionRoute')
 
 var seasonsRoute= require('./routes/seasonsRoute')
 
+var parentsRoute= require('./routes/parentsRoute')
+
 const {application} = require("express");  
 
 
@@ -49,6 +51,8 @@ app.use(express.urlencoded({
   app.use('/api/addresses', addressRoute)
 
   app.use('/api/seasons', seasonsRoute)
+
+  app.use('/api/parents/', parentsRoute)
 
 
 

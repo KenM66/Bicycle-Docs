@@ -49,7 +49,7 @@ router.post('/newaddress', async(req,res)=>{
         country: address.country
     })
 
-    AddressModel.save(err=>{
+    AddressModel.save((err, body)=>{
             if(err){
                 console.log(err);
                 return res.status(440).json({message: "Something with address save went wrong"})
