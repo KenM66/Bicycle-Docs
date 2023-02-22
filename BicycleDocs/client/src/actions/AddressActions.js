@@ -20,7 +20,7 @@ export const saveAddress= (address)=> dispatch=>{
 
     axios.post('http://localhost:5000/api/addresses/newaddress', {address}).then(res=>{
         console.log(res);
-        dispatch({type: 'SAVE_ADDRESS_SUCCESS'})
+        dispatch({type: 'SAVE_ADDRESS_SUCCESS', payload: res.data})
     })
     .catch(err=>{
         dispatch({type: 'SAVE_ADDRESS_FAILED'})

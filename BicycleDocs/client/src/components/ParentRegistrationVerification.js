@@ -1,13 +1,24 @@
 import { useDispatch, useSelector} from 'react-redux'
 import { registerNewUser } from "../actions/UserActions";
+import { saveAddress } from '../actions/AddressActions';
+import { saveParent } from '../actions/ParentActions';
+import Loader from './Loader';
+import Error from './Error';
 
 const ParentRegistrationVerification=()=>{
     const dispatch= useDispatch();
  
     const registerUserState= useSelector((state)=> state.registerNewUserReducer);
+    const saveAddressState= useSelector((state)=>state.saveAddressReducer);
+    const saveParentState= useSelector((state)=> state.saveParentReducer);
 
-   let {loading, error, success}= registerUserState;
+   let {loading, error, success, registeredUser}= registerUserState;
 
+   let {loadingSaveAddress, errorSaveAddress, successSaveAddress, registeredAddress }= saveAddressState;
+
+   let {loadingSaveParent, errorSaveParent, successSaveParent}= saveParentState;
+   
+   
    const register= async (e)=>{
     e.preventDefault();
 
@@ -21,8 +32,6 @@ const ParentRegistrationVerification=()=>{
         
 
     }
-     dispatch(registerNewUser(user));
-
      const address={
         addressLine: props.state.address,
         city: props.state.city,
@@ -30,7 +39,58 @@ const ParentRegistrationVerification=()=>{
         postalCode: props.state.postalCode, 
         country: "United States of America"
     }
+
+   
+    dispatch(registerNewUser(user));
+
+    const parent={
+        firstName: props.state.firstName, 
+        lastName: props.state.lastName, 
+       
+    }
+
+    var promise= new Promise(function(resolve, reject){
+         dispatch(saveAddress(address))
+         resolve(true);
+    })
+ 
+    await promise.then(()=>{
+        console.log("Address added to parent: " +registeredAddress);
+        console.log("User added to parent: "+registeredUser);
+        dispatch(saveParent(parent, registeredUser, registeredAddress));
+    })
+
+    props.next();
+
+ 
+ 
+
    }
+
+   return(
+        <div>
+            {(loading || loadingSaveAddress || loadingSaveParent)&&(<Loader/>)}
+            {(error || errorSaveAddress || errorSaveParent)&& (<Error/>)}
+            <h5>Verify Details</h5>
+            <p>Parent Name: {props.state.lastName}, {props.state.firstName}</p>
+            <br/>
+            <p>Address: <br/>
+            {props.state.address}<br/>
+            {props.state.city}, {props.state.state} {props.state.postalCode}
+            </p>
+            <p>Phone: {props.state.phone}</p>
+           
+            <p>EMail: {props.state.email}</p>
+
+            <button className='btn btn-info' onClick={props.prev}>Edit Details</button>
+            <button className='btn btn-success' onClick={register}>Register</button>
+
+
+        </div>
+   )
+
+
+
 
 }
 

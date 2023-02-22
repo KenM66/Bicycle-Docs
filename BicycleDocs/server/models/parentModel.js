@@ -15,7 +15,12 @@ const parentSchema= new mongoose.Schema({
     }, 
     user:{
         type: mongoose.Schema.Types.ObjectId, ref: "users"
-    }
+    },
+    children:[
+        {type: mongoose.Schema.Types.ObjectId, ref: "children"}
+    ]
+
+    
 })
 
 const Parent= mongoose.model('parents', parentSchema);

@@ -55,7 +55,7 @@ router.post('/newaddress', async(req,res)=>{
                 return res.status(440).json({message: "Something with address save went wrong"})
             }
             else{
-                res.send("Address added successfully")
+                res.send(body)
             }
     })
 

@@ -86,80 +86,6 @@ import axios from 'axios';
              
                 dispatch(registerNewSchool(school, user, address))
                    
-               
-
-                // getEmailData(props.state.email)
-
-                 
-                  
-                
-       //  },2000)
-
-       
-
-      
-
-
-        //  await axios.get('http://localhost:5000/api/addresses/getaddressbyvalues', {addressLine: props.state.address, postalCode: props.state.postalCode})
-        //  .then(res=>{
-        //         console.log(res);
-        //         addressId= res.data[0]._id;
-        //         console.log(addressId);
-        //  }).catch(err=>{
-        //     console.log(err);
-        //  })
-
-
-     
-
-       //  console.log(props.state.email);
-
-         //getEmailData(props.state.email);
-
-        // setTimeout(()=>{
-            // await axios.get('http://localhost:5000/api/users/user-by-email', {email: props.state.email})
-
-            // .then(res=>{
-            //     console.log(res);
-            //     // userId= res.data[0]._id;
-            //     // console.log(userId);
-            // }).catch(err=>{
-            //     console.log(err);
-            // })
-           
-       //  },5000)
-
-        //  let schoolId= null;
-
-        //  setTimeout(()=>{
-        //     axios.get('http://localhost:5000/api/schools/findschoolbyuser', userId)
-        //     .then(res=>{
-        //         console.log(res);
-        //         schoolId= res._id;
-        //         console.log(schoolId);
-        //     })
-
-        //  }, 2000)
-
-
-        //  setTimeout(()=>{
-        //     axios.put(`http://localhost:5000/api/schools/add-address-to-school/${addressId}/${schoolId}`)
-        //     .then(res=>{
-        //         console.log(res);
-        //     }).catch(err=>{
-        //         console.log(err);
-        //     })
-        //  }, 2000)
-
-
-       
-         
-
-        //  setTimeout(()=>{
-            
-        //  }, 2000)
-       
-         
     }
 
     
@@ -170,14 +96,7 @@ import axios from 'axios';
       const completeRegistration= async ()=>{
         let addressId=null;
 
-    //    await  axios.get('http://localhost:5000/api/addresses/get-all-addresses').then(
-    //         res=>{
-    //             console.log(res);
-    //         }
-    //     )
 
-    //   console.log(props.state.address);
-    //   console.log(props.state.postalCode);
 
       const addressLine= props.state.address;
       const postalCode= props.state.postalCode;
@@ -196,26 +115,7 @@ import axios from 'axios';
      })
     
     
-    // let userId=registeredUser._id;
-    //  const email= props.state.email;
-    // await  axios.get(`http://localhost:5000/api/users/user-by-email/${email}`)
-    
-    //  .then(res=>{
-    //      console.log(res.data);
-    //       userId= res.data._id;
-    //       console.log(userId);
-    //  }).catch(err=>{
-    //      console.log(err);
-    //  })
-    
-          
-    
-    //   await axios.get(`http://localhost:5000/api/schools/findschoolbyuser/${registeredUser._id}`)
-    //             .then(res=>{
-    //                 console.log(res.data);
-    //                 schoolId= res.data._id;
-    //                 console.log(schoolId);
-    //             })
+   
     
            
       await axios.put(`http://localhost:5000/api/schools/add-address-to-school/${addressId}/${registeredSchool._id}`)

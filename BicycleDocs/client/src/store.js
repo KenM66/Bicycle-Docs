@@ -9,6 +9,7 @@ import { registerSchoolReducer, getSchoolByUserReducer } from './reducers/School
 import { subscribeReducer } from './reducers/SubscriptionReducers';
 import { addAddressToSchoolReducer, saveAddressReducer } from './reducers/AddressReducers';
 import { getCurrentSeasonsBySchoolReducer, getSeasonByIdReducer, createNewSeasonReducer } from './reducers/SeasonsReducer';
+import { saveParentReducer } from './reducers/ParentReducers';
 
 const finalReducer= combineReducers({
     getPriceReducer: getPriceReducer,
@@ -23,7 +24,8 @@ const finalReducer= combineReducers({
     saveAddressReducer: saveAddressReducer,
     getCurrentSeasonsBySchoolReducer: getCurrentSeasonsBySchoolReducer,
     getSeasonByIdReducer: getSeasonByIdReducer, 
-    createNewSeasonReducer: createNewSeasonReducer
+    createNewSeasonReducer: createNewSeasonReducer,
+    saveParentReduer: saveParentReducer
     
 })
 

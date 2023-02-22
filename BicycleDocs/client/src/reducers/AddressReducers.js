@@ -52,7 +52,8 @@ export const saveAddressReducer=(state={}, action)=>{
         case 'SAVE_ADDRESS_SUCCESS': return{
             ...state, 
             loadingSaveAddress: false, 
-            successSaveAddress: true
+            successSaveAddress: true,
+            registeredAddress: action.payload
         }
         case 'SAVE_ADDRESS_FAILED': return{
             ...state, 
