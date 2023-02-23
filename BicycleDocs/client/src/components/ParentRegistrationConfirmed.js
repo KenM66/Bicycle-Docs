@@ -9,3 +9,5 @@ const ParentRegistrationConfirmed= (props)=>{
     )
 
 }
+
+export default ParentRegistrationConfirmed;

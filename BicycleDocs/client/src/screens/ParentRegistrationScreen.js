@@ -4,6 +4,7 @@ import ParentRegistrationStepOne from '../components/ParentRegistrationStepOne';
 import ParentRegistrationStepTwo from  '../components/ParentRegistrationStepTwo';
 import ParentRegistrationStepThree from  '../components/ParentRegistrationStepThree';
 import ParentRegistrationVerification from '../components/ParentRegistrationVerification';
+import ParentRegistrationConfirmed from '../components/ParentRegistrationConfirmed'
 
 const ParentRegistrationScreen=()=>{
 
@@ -17,6 +18,7 @@ const ParentRegistrationScreen=()=>{
                     <Step component= {ParentRegistrationStepTwo}/>
                     <Step component= {ParentRegistrationStepThree}/>
                     <Step component= {ParentRegistrationVerification}/>
+                    <Step component= {ParentRegistrationConfirmed}/>
                 </Steps>
             </div>
         </div>
