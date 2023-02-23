@@ -27,6 +27,7 @@ const ParentRegistrationVerification=(props)=>{
         console.log(registeredAddress+"   is the new address.");
         console.log(registeredUser+ "    is the new user");
         createNewParent();
+        props.next();
     }
    },[registeredUser, registeredAddress])
    
