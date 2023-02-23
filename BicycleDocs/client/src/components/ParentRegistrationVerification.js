@@ -4,8 +4,9 @@ import { saveAddress } from '../actions/AddressActions';
 import { saveParent } from '../actions/ParentActions';
 import Loader from './Loader';
 import Error from './Error';
+import { useEffect } from 'react';
 
-const ParentRegistrationVerification=()=>{
+const ParentRegistrationVerification=(props)=>{
     const dispatch= useDispatch();
  
     const registerUserState= useSelector((state)=> state.registerNewUserReducer);
@@ -14,9 +15,20 @@ const ParentRegistrationVerification=()=>{
 
    let {loading, error, success, registeredUser}= registerUserState;
 
+
+
    let {loadingSaveAddress, errorSaveAddress, successSaveAddress, registeredAddress }= saveAddressState;
 
    let {loadingSaveParent, errorSaveParent, successSaveParent}= saveParentState;
+
+   useEffect(()=>{
+
+    if(registeredAddress && registeredUser){
+        console.log(registeredAddress+"   is the new address.");
+        console.log(registeredUser+ "    is the new user");
+        createNewParent();
+    }
+   },[registeredUser, registeredAddress])
    
    
    const register= async (e)=>{
@@ -32,7 +44,28 @@ const ParentRegistrationVerification=()=>{
         
 
     }
-     const address={
+    
+
+
+    var promise= new Promise(function(resolve, reject){
+        dispatch(registerNewUser(user));
+        setTimeout(()=>{
+            resolve(true);
+        },1000)
+       
+    })
+
+   
+    await promise.then((response)=>{
+        console.log(response)
+        console.log(registeredUser);
+        
+    })
+
+  
+
+    
+    const address={
         addressLine: props.state.address,
         city: props.state.city,
         state: props.state.state,
@@ -40,30 +73,45 @@ const ParentRegistrationVerification=()=>{
         country: "United States of America"
     }
 
+    
+        dispatch(saveAddress(address))
+    
+
+      
+        
+   }
+
+
+ 
+
+ 
+
    
-    dispatch(registerNewUser(user));
+
+
+ 
+ 
+
+   
+
+  
+
+   const createNewParent= async ()=>{
 
     const parent={
         firstName: props.state.firstName, 
         lastName: props.state.lastName, 
        
     }
+    
 
-    var promise= new Promise(function(resolve, reject){
-         dispatch(saveAddress(address))
-         resolve(true);
-    })
- 
-    await promise.then(()=>{
-        console.log("Address added to parent: " +registeredAddress);
-        console.log("User added to parent: "+registeredUser);
-        dispatch(saveParent(parent, registeredUser, registeredAddress));
-    })
+  
 
-    props.next();
+   
 
  
- 
+
+   dispatch(saveParent(parent, registeredUser, registeredAddress));
 
    }
 

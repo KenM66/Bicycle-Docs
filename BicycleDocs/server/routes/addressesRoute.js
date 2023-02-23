@@ -39,7 +39,9 @@ router.post('/getaddressbyvalues', async (req, res)=>{
 
 router.post('/newaddress', async(req,res)=>{
 
-    const address= req.body
+    const address= req.body.address
+
+    console.log(address);
 
     const AddressModel= new Address({
         addressLine: address.addressLine,

@@ -6,9 +6,10 @@ export const registerSchoolReducer= (state={}, action )=>{
         }
         case 'SCHOOL_REGISTER_SUCCESS': return{
             ...state, 
+            registeredSchool: action.payload,
             loadingSchool: false, 
             successSchool: true, 
-            registeredSchool: action.payload
+            
         }
         case 'SCHOOL_REGISTER_FAILED': return{
             ...state, 

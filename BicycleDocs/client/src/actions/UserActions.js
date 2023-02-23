@@ -8,7 +8,7 @@ export const registerNewUser=(user)=> dispatch=>{
     axios.post('http://localhost:5000/api/users/adduser', user)
     .then(res=>{
         dispatch({type: 'USER_REGISTER_SUCCESS', payload: res.data})
-        console.log(res)
+        console.log(res.data)
     })
     .catch(err=>{
         dispatch({type: 'USER_REGISTER_FAILED', payload: err})
@@ -22,6 +22,7 @@ export const getAllUsers=()=>(dispatch)=>{
     axios.get('http://localhost:5000/api/users/get-all-users')
     .then(res=>{
         dispatch({type: 'GET_ALLUSERS_SUCCESS', payload: res.data});
+       
     }).catch(err=>{
         dispatch({type: 'GET_ALLUSERS_FAILED', payload: err})
     })

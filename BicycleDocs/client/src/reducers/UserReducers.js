@@ -12,7 +12,8 @@ export const registerNewUserReducer= (state={}, action)=>{
             ...state, 
             loading: false, 
             success: true, 
-            registeredUser: action.payload
+            registeredUser: action.payload,
+          
         }
         case 'USER_REGISTER_FAILED' : return {
             ...state, 

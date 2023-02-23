@@ -38,11 +38,11 @@ export default function Navbar() {
 
 <div className="navbar-nav ms-auto">
   
-<a className= "nav-item nav-link" href="#">
+<a className= "nav-item nav-link" href="/parent-registration">
   Parent Registration
 </a>
 
-<a className= "nav-item nav-link" href="#">
+<a className= "nav-item nav-link" href="*">
   Parent Login
 </a>
 

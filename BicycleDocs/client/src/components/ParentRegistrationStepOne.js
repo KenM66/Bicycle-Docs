@@ -40,7 +40,7 @@ const ParentRegistrationStepOne=(props)=>{
             props.state.firstName= values.firstName;
             props.state.lastName= values.lastName;
             props.state.phone= values.phone;
-
+            console.log("This is executing")
             props.next();
 
         }

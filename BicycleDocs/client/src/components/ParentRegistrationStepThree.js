@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { getAllUsers } from '../actions/UserActions';
 import Loader from './Loader';
 import Error from './Error'
+import { useDispatch, useSelector } from 'react-redux';
 
 const ParentRegistrationStepThree=(props)=>{
     const getUsersState= useSelector(state=> state.getAllUsersReducer);
@@ -22,6 +23,24 @@ const ParentRegistrationStepThree=(props)=>{
 
     
 },[])
+
+
+const signUpSchema= Yup.object().shape({
+    email: Yup.string().min(5, "Too Short").email("Invalid Email").required("Email is required"),
+
+    password: Yup.string()
+    .required("Password is required")
+    .min(8, "Password must be at least 8 characters"),
+
+    password2: Yup.string().required("You must confirm password").when("password", {
+        is: val=>(val && val.length >0? true: false), 
+        then: Yup.string().oneOf(
+            [Yup.ref('password')],
+            "Passwords must match"
+        )
+    })
+})
+
 
 if(users){
     try{

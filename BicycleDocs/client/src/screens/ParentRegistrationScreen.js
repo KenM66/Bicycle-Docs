@@ -1,8 +1,8 @@
 import React from 'react'
 import {Steps, Step} from "react-step-builder";
 import ParentRegistrationStepOne from '../components/ParentRegistrationStepOne';
-import ParentRegistrationStepTwo from  '../components/ParentRegistrationStepOne';
-import ParentRegistrationStepThree from  '../components/ParentRegistrationStepOne';
+import ParentRegistrationStepTwo from  '../components/ParentRegistrationStepTwo';
+import ParentRegistrationStepThree from  '../components/ParentRegistrationStepThree';
 import ParentRegistrationVerification from '../components/ParentRegistrationVerification';
 
 const ParentRegistrationScreen=()=>{
