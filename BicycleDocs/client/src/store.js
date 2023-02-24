@@ -27,7 +27,7 @@ const finalReducer= combineReducers({
     createNewSeasonReducer: createNewSeasonReducer,
     saveParentReducer: saveParentReducer,
     parentLoginReducer: parentLoginReducer,
-    getParentByUserIdReducer: getParentByUserIdReducer
+   getParentByUserIdReducer: getParentByUserIdReducer
     
 })
 

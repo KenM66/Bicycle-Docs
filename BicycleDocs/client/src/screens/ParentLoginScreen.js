@@ -58,6 +58,7 @@ const ParentLoginScreen=()=>{
     
         setTimeout(()=>{
             console.log(parentByUserState);
+            console.log(parentLoggedIn);
          },2000)
 
         
