@@ -71,7 +71,22 @@ export const schoolLogin=(user)=> dispatch=>{
 export const logoutUser= ()=> dispatch =>{
     localStorage.removeItem('currentUser')
     
-    dispatch({type: 'USER_LOGOUT'})
+    dispatch({type: 'USER_LOGOUT'});
 
-    window.location.href='/'
+    window.location.href='/';
+}
+
+export const parentLogin= (user)=> dispatch=>{
+    dispatch({type: 'PARENT_LOGIN_REQUEST'});
+
+    axios.post("http://localhost:5000/api/users/parent-login", user)
+    .then(res=>{
+        dispatch({type: 'PARENT_LOGIN_SUCCESS', payload: res.data});
+        localStorage.setItem('currentUser', JSON.stringify(res.data));
+        
+    })
+    .catch(err=>{
+        dispatch({type: 'PARENT_LOGIN_FAILED', payload: err});
+        console.log(err);
+    })
 }

@@ -194,6 +194,43 @@ router.post('/school-login',  async (req, res)=>{
 
  })
 
+ router.post('/parent-login', async (req, res)=>{
+    const user= await User.findOne({email: req.body.email});
+
+    if(!user){
+        console.log("User not found")
+        return res.status(400).json({
+            error: "User Not Found!"
+      //test
+        })
+       }
+
+     const match = await comparePassword(req.body.password, user.password)
+        if(!match){
+            console.log("Wrong Password!")
+            return res.status(400).json({
+                 error: "Wrong Password"
+            });
+         }
+        else{
+            console.log("This matched")
+
+            if(user){
+                if(user.userType==='Parent'){
+                    res.send(user);
+                }
+                else{
+                    return res.status(400).json({message: "User isn't of type parent!"})
+                }
+            }
+
+            
+             }
+
+        
+       
+        })
+
 
 
 module.exports= router;

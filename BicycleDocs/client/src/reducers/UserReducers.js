@@ -81,7 +81,7 @@ export const schoolLoginReducer=(state={}, action)=>{
         case 'SCHOOL_LOGIN_FAILED': return{
             ...state, 
             loading: false, 
-            error: "Invalid Credentials"
+            error: true
         }
         case 'LOGOUT' : return {
             ...state 
@@ -90,6 +90,25 @@ export const schoolLoginReducer=(state={}, action)=>{
         default: return {state}
 
 
+    }
+}
+
+export const parentLoginReducer=(state={}, action)=>{
+    switch(action.type){
+        case 'PARENT_LOGIN_REQUEST': return{
+            ...state, 
+            loading: true
+        }
+        case 'PARENT_LOGIN_SUCCESS': return{
+            ...state, 
+            loading: false, 
+            loggedInUser: action.payload
+        }
+        case 'PARENT_LOGIN_FAILED': return{
+            ...state, 
+            loading: false, 
+            error: true
+        }
     }
 }
 

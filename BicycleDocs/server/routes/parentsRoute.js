@@ -34,4 +34,15 @@ router.post('/add-parent', async (req, res)=>{
 
 })
 
+router.get('/parent-by-user-id/:id', async (req,res)=>{
+    await Parent.findOne({user: req.params.id}, (err, docs)=>{
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.send(docs);
+        }
+    }).clone() 
+})
+
 module.exports= router;

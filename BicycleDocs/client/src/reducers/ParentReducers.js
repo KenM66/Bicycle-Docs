@@ -18,3 +18,24 @@ export const saveParentReducer=(state={}, action)=>{
         default: return state; 
     }
 }
+
+export const getParentByUserIdReducer=(state={}, action)=>{
+    switch(action.type){
+        case 'GET_PARENTBYUSERID_REQUEST': return{
+            ...state, 
+            loadingParent: true
+         }
+        case 'GET_PARENTBYUSERID_SUCCESS': return{
+            ...state, 
+            loadingParent: false, 
+            parentLoggedIn: action.payload
+        }
+        case 'GET PARENTBYUSERID_FAILED': return{
+            ...state, 
+            loadingParent: false, 
+            parentError: true
+        }
+
+        default: return state;
+    }
+}
