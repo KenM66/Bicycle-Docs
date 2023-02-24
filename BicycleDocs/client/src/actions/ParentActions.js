@@ -13,3 +13,19 @@ export const saveParent= (parent, user, address)=> dispatch=>{
         console.log(err);
     })
 }
+
+export const getParentByUserId= (userId)=> dispatch=> {
+    dispatch({type: 'GET_PARENTBYUSERID_REQUEST'});
+
+    axios.get(`http://localhost:5000/api/parents/parent-by-user-id/${userId}`)
+    .then(res=>{
+        console.log(res.data);
+        dispatch({type: 'GET_PARENTBYUSERID_SUCCESS', payload: res.data});
+        console.log("Action should have been dispatched. ")
+        
+    })
+    .catch(err=>{
+        dispatch({type: 'GET_PARENTBYUSERID_FAILED'});
+        console.log(err);
+    })
+}

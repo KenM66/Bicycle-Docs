@@ -4,12 +4,12 @@ import {combineReducers} from 'redux';
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import {  getAllUsersReducer, registerNewUserReducer, updateEmailConfirmedReducer, schoolLoginReducer } from './reducers/UserReducers';
+import {  getAllUsersReducer, registerNewUserReducer, updateEmailConfirmedReducer, schoolLoginReducer, parentLoginReducer } from './reducers/UserReducers';
 import { registerSchoolReducer, getSchoolByUserReducer } from './reducers/SchoolReducers';
 import { subscribeReducer } from './reducers/SubscriptionReducers';
 import { addAddressToSchoolReducer, saveAddressReducer } from './reducers/AddressReducers';
 import { getCurrentSeasonsBySchoolReducer, getSeasonByIdReducer, createNewSeasonReducer } from './reducers/SeasonsReducer';
-import { saveParentReducer } from './reducers/ParentReducers';
+import { getParentByUserIdReducer, saveParentReducer } from './reducers/ParentReducers';
 
 const finalReducer= combineReducers({
     getPriceReducer: getPriceReducer,
@@ -25,14 +25,20 @@ const finalReducer= combineReducers({
     getCurrentSeasonsBySchoolReducer: getCurrentSeasonsBySchoolReducer,
     getSeasonByIdReducer: getSeasonByIdReducer, 
     createNewSeasonReducer: createNewSeasonReducer,
-    saveParentReducer: saveParentReducer
+    saveParentReducer: saveParentReducer,
+    parentLoginReducer: parentLoginReducer,
+    getParentByUserIdReducer: getParentByUserIdReducer
     
 })
 
 const currentUser= localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser')): null
 
 const initialState= {
-    schoolLoginReducer: {currentUser: currentUser}
+   
+    schoolLoginReducer: {currentUser: currentUser}, 
+    //parentLoginReducer: {currentUser: currentUser}
+
+    
 }
 
 const composeEnhancers= composeWithDevTools({

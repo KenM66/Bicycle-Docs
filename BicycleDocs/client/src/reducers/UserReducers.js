@@ -94,6 +94,7 @@ export const schoolLoginReducer=(state={}, action)=>{
 }
 
 export const parentLoginReducer=(state={}, action)=>{
+    console.log(state);
     switch(action.type){
         case 'PARENT_LOGIN_REQUEST': return{
             ...state, 
@@ -109,6 +110,8 @@ export const parentLoginReducer=(state={}, action)=>{
             loading: false, 
             error: true
         }
+
+        default: return {state}
     }
 }
 

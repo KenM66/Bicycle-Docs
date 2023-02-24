@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getSchoolByUserId } from './SchoolActions';
+
 
 
 export const registerNewUser=(user)=> dispatch=>{
@@ -70,7 +70,8 @@ export const schoolLogin=(user)=> dispatch=>{
 
 export const logoutUser= ()=> dispatch =>{
     localStorage.removeItem('currentUser')
-    
+    localStorage.removeItem('school')
+    localStorage.removeItem('parent')
     dispatch({type: 'USER_LOGOUT'});
 
     window.location.href='/';

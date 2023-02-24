@@ -42,7 +42,7 @@ export default function Navbar() {
   Parent Registration
 </a>
 
-<a className= "nav-item nav-link" href="*">
+<a className= "nav-item nav-link" href="/parent-login">
   Parent Login
 </a>
 

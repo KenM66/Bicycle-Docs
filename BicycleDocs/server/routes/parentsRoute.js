@@ -40,6 +40,7 @@ router.get('/parent-by-user-id/:id', async (req,res)=>{
             console.log(err);
         }
         else{
+            console.log("Parent by User Id is the following:  " +docs);
             res.send(docs);
         }
     }).clone() 

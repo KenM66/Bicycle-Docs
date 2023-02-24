@@ -18,6 +18,7 @@ import { getSchoolByUserId } from './actions/SchoolActions';
 import SeasonInfoScreen from './screens/SeasonInfoScreen';
 import NewSeasonScreen from './screens/NewSeasonScreen';
 import ParentRegistrationScreen from './screens/ParentRegistrationScreen';
+import ParentLoginScreen from './screens/ParentLoginScreen';
 
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
             <Route path='/season/:id' element={(<SeasonInfoScreen/>)}/>
             <Route path= '/seasons/new-season' element={(<NewSeasonScreen/>)}/>
             <Route path= '/parent-registration' element={(<ParentRegistrationScreen/>)}/>
+            <Route path= '/parent-login' element={(<ParentLoginScreen/>)}/>
           </Routes>
         </BrowserRouter>
 
