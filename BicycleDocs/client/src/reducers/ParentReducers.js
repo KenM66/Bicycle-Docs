@@ -20,24 +20,33 @@ export const saveParentReducer=(state={}, action)=>{
 }
 
 export const getParentByUserIdReducer=(state={}, action)=>{
-    console.log(state)
-    switch(action.type){
-        case 'GET_PARENTBYUSERID_REQUEST': console.log("test"); return{
+    console.log(state);
+    if(action.type==='GET_PARENTBYUSERID_REQUEST'){
+        return{
             ...state, 
-            loadingParent: true
-         }
-        case 'GET_PARENTBYUSERID_SUCCESS': console.log("Success dispatched");
-         return{
+            loadingParent: true, 
+            dummyBoolean: false
+        }
+    }
+    else if(action.type==='GET_PARENTBYUSERID_SUCCESS'){
+        console.log("About to execute");
+        return{
             ...state, 
             loadingParent: false, 
+            dummyBoolean: false,
             parentLoggedIn: action.payload
-           }
-         case 'GET_PARENTBYUSERID_FAILED': return{
+        }
+    }
+    else if(action.type==='GET_PARENTBYUSERID_FAILED'){
+        return{
             ...state, 
             loadingParent: false, 
             errorParent: true
         }
-        default:  return state
     }
-   
+    else{
+        return state; 
+    }
+
+    
 }

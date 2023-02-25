@@ -9,7 +9,11 @@ const ParentLoginScreen=()=>{
 
     const parentLoginState= useSelector(state=> state.parentLoginReducer);
 
+    
+
     const parentByUserState= useSelector(state=> state.getParentByUserIdReducer);
+
+    console.log(parentByUserState);
 
     const {loading, error, loggedInUser}= parentLoginState;
 
@@ -28,10 +32,12 @@ const ParentLoginScreen=()=>{
 
     useEffect(()=>{
 
-        if(!localStorage.getItem("parent")){
-            localStorage.setItem('parent', parentLoggedIn);
-            window.location.href='/'
-            console.log("This Works")
+        if(!localStorage.getItem("parent")&&(parentLoggedIn)){
+            localStorage.setItem('parent', JSON.stringify(parentLoggedIn));
+        
+            console.log(parentLoggedIn);
+            console.log(JSON.parse(localStorage.getItem('parent')))
+           // window.location.href='/'
         }
 
     },[parentLoggedIn])
@@ -55,12 +61,17 @@ const ParentLoginScreen=()=>{
     const setParent=(user)=>{
         console.log(user._id)
         dispatch(getParentByUserId(user._id));
+
+        console.log(parentByUserState);
     
         setTimeout(()=>{
+            console.log(parentLoginState);
             console.log(parentByUserState);
             console.log(parentLoggedIn);
+            console.log(loadingParent);
          },2000)
 
+         console.log(parentByUserState);
         
     }
 

@@ -19,6 +19,7 @@ import SeasonInfoScreen from './screens/SeasonInfoScreen';
 import NewSeasonScreen from './screens/NewSeasonScreen';
 import ParentRegistrationScreen from './screens/ParentRegistrationScreen';
 import ParentLoginScreen from './screens/ParentLoginScreen';
+import ParentNavBar from './components/ParentNavbar';
 
 
 function App() {
@@ -31,6 +32,9 @@ function App() {
 
   const {school} = schoolState;
 
+  const testParent= localStorage.getItem('parent');
+  if(testParent)
+  console.log(JSON.parse(localStorage.getItem('parent')));
 
   useEffect(()=>{
     if(currentUser)
@@ -48,6 +52,9 @@ function App() {
 
 
           {(currentUser && currentUser.userType==="School" ) &&(<SchoolNavBar/>)}
+          {(currentUser && currentUser.userType==="Parent")&& (<ParentNavBar/>)}
+
+          
 
            {/* {(currentUser.userType==="School") && ( <SchoolNavBar/>) } */}
 

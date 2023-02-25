@@ -27,7 +27,7 @@ const finalReducer= combineReducers({
     createNewSeasonReducer: createNewSeasonReducer,
     saveParentReducer: saveParentReducer,
     parentLoginReducer: parentLoginReducer,
-   getParentByUserIdReducer: getParentByUserIdReducer
+    getParentByUserIdReducer: getParentByUserIdReducer
     
 })
 
@@ -36,7 +36,8 @@ const currentUser= localStorage.getItem('currentUser') ? JSON.parse(localStorage
 const initialState= {
    
     schoolLoginReducer: {currentUser: currentUser}, 
-    //parentLoginReducer: {currentUser: currentUser}
+    getParentByUserIdReducer: {dummyBoolean: true}
+    
 
     
 }

@@ -1,17 +1,14 @@
 
-
-
-const SchoolNavbar = ()=>{
-
-    
+const ParentNavBar=()=>{
 
     return(
         <div>
            
-            <nav className="navbar navbar-school navbar-expand-lg" >
+            <nav className="navbar navbar-parent navbar-expand-lg" >
                 <a className="navbar-brand" href="*">
-                SCHOOL PORTAL
-                    <i className="fas fa-school"></i>
+                Parent Portal
+                  
+                  <i className='fas fa-child'></i>
                 </a>
                 <button
           className="navbar-toggler"
@@ -29,9 +26,10 @@ const SchoolNavbar = ()=>{
 
         <div className="navbar-nav ms-auto">
               
-               <a className="nav-item nav-link nav-link-school"  href="/seasons">Manage Seasons</a>
-               <a className="nav-item nav-link nav-link-school"  href="*">Subscription</a>
-               <a className="nav-item nav-link nav-link-school"  href="*">Account</a>
+               <a className="nav-item nav-link nav-link-parent"  href="*">Manage Children</a>
+               <a className="nav-item nav-link nav-link-parent"  href="*">Register</a>
+               <a className="nav-item nav-link nav-link-parent"  href="*">Orders</a>
+               <a className="nav-item nav-link nav-link-parent"  href="*">Account</a>
        </div>
 
                
@@ -50,4 +48,4 @@ const SchoolNavbar = ()=>{
 
 }
 
-export default SchoolNavbar;
+export default ParentNavBar;

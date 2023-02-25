@@ -39,3 +39,11 @@ code {
   color: rgb(233, 21, 21) !important;
  
 }
+
+.navbar-parent{
+  background-color: blue !important;
+}
+
+.nav-link-parent{
+  color: lawngreen !important
+}
