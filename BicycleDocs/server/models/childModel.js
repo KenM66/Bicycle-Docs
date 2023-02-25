@@ -14,6 +14,11 @@ const childSchema= new mongoose.Schema({
         type: Date, 
         require: true
     },
+
+    image:{
+        type: String, 
+        require: true
+    },
    
 
     parent:{
