@@ -37,4 +37,16 @@ router.get('/get-children-by-parent/:parentId', async (req, res)=>{
     }).clone();
 })
 
+router.get('/child-by-id/:id', async(req, res)=>{
+    await Child.findById({"_id":req.params.id}, (err, docs)=>{
+        if(!err){
+            res.send(docs);
+        }
+        else{
+            console.log(err);
+            return res.status(400).json({message: "Could not find the child you're looking for. \n"+ err})
+        }
+    }).clone()
+})
+
 module.exports= router;

@@ -73,7 +73,7 @@ const ChildrenScreen=()=>{
                      {(success && children && children.length>0)  &&(
                         children.map(kid=>{
                             return <div>
-                                <ChildCard image= {kid.image} name= {kid.firstName+' '+ kid.lastName} age= {getChildAge(kid.dateOfBirth)} bikes='1' regActive='1'/>
+                                <ChildCard id={kid._id} image= {kid.image} name= {kid.firstName+' '+ kid.lastName} age= {getChildAge(kid.dateOfBirth)} bikes='1' regActive='1'/>
                             </div>
                         })
                        
