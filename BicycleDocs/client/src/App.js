@@ -20,6 +20,7 @@ import NewSeasonScreen from './screens/NewSeasonScreen';
 import ParentRegistrationScreen from './screens/ParentRegistrationScreen';
 import ParentLoginScreen from './screens/ParentLoginScreen';
 import ParentNavBar from './components/ParentNavbar';
+import ChildrenScreen from './screens/ChildrenScreen';
 
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
             <Route path= '/seasons/new-season' element={(<NewSeasonScreen/>)}/>
             <Route path= '/parent-registration' element={(<ParentRegistrationScreen/>)}/>
             <Route path= '/parent-login' element={(<ParentLoginScreen/>)}/>
+            <Route path= '/children' element={(<ChildrenScreen/>)}/>
           </Routes>
         </BrowserRouter>
 

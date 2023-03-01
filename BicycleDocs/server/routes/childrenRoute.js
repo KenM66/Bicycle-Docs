@@ -17,12 +17,24 @@ router.post('/add-child/:parentId', (req, res)=>{
     childModel.save((err, body)=>{
         if(err){
             console.log(err);
-            return res.status(400).json({message:  "The following error occured "+ err })
+            return res.status(400).json({message:  "The following error occured \n"+ err })
         }
         else{
             res.send(body);
         }
     })
+})
+
+router.get('/get-children-by-parent/:parentId', async (req, res)=>{
+    await Child.find({'parent': {_id: req.params.parentId}}, (err, docs)=>{
+        if(!err){
+            res.send(docs);
+        }
+        else{
+            console.log(err);
+            return  res.status(400).json({message: "The follow error occured \n"+err});
+        }
+    }).clone();
 })
 
 module.exports= router;
