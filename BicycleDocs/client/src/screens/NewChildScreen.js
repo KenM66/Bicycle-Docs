@@ -51,7 +51,7 @@ const NewChildScreen=()=>{
 
     return(
     <div> <br/>
-        <div style={{backgroundColor: "#89cff0", width: "1500px", height: "700px", margin: "0 auto"}}>
+        <div style={{backgroundColor: "#89cff0", width: "1000px", height: "700px", margin: "0 auto"}}>
 
             <div><br/>
 
