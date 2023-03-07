@@ -22,6 +22,7 @@ import ParentLoginScreen from './screens/ParentLoginScreen';
 import ParentNavBar from './components/ParentNavbar';
 import ChildrenScreen from './screens/ChildrenScreen';
 import ChildInfoScreen from './screens/ChildInfoScreen';
+import NewChildScreen from './screens/NewChildScreen';
 
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
             <Route path= '/parent-login' element={(<ParentLoginScreen/>)}/>
             <Route path= '/children' element={(<ChildrenScreen/>)}/>
             <Route path= '/child/:id' element={(<ChildInfoScreen/>)}/>
+            <Route path= '/new-child' element={(<NewChildScreen/>)}/>
           </Routes>
         </BrowserRouter>
 

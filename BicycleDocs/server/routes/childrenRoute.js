@@ -26,7 +26,7 @@ router.post('/add-child/:parentId', (req, res)=>{
 })
 
 router.get('/get-children-by-parent/:parentId', async (req, res)=>{
-    await Child.find({'parent': {_id: req.params.parentId}}, (err, docs)=>{
+     Child.find({'parent': {_id: req.params.parentId}}, (err, docs)=>{
         if(!err){
             res.send(docs);
         }
@@ -34,11 +34,11 @@ router.get('/get-children-by-parent/:parentId', async (req, res)=>{
             console.log(err);
             return  res.status(400).json({message: "The follow error occured \n"+err});
         }
-    }).clone();
+    })
 })
 
 router.get('/child-by-id/:id', async(req, res)=>{
-    await Child.findById({"_id":req.params.id}, (err, docs)=>{
+   Child.findById({"_id":req.params.id}, (err, docs)=>{
         if(!err){
             res.send(docs);
         }
@@ -46,7 +46,7 @@ router.get('/child-by-id/:id', async(req, res)=>{
             console.log(err);
             return res.status(400).json({message: "Could not find the child you're looking for. \n"+ err})
         }
-    }).clone()
+    })
 })
 
 module.exports= router;

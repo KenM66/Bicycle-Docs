@@ -2,6 +2,8 @@ import { BrowserRouter as Router,Link, useNavigate } from "react-router-dom";
 
 const ChildCard= (props)=>{
 
+    
+
     const navigate= useNavigate();
 
     const routeToInfo=()=>{
