@@ -27,6 +27,8 @@ var parentsRoute= require('./routes/parentsRoute')
 
 var childrenRoute= require('./routes/childrenRoute')
 
+var imagesRoute= require('./routes/imagesRoute')
+
 const {application} = require("express");  
 
 
@@ -36,6 +38,8 @@ app.use(express.urlencoded({
   }));
 
   app.use(express.json());
+
+  //app.use('/images', express.static('images'));
 
 
   app.use(cors({
@@ -57,6 +61,8 @@ app.use(express.urlencoded({
   app.use('/api/parents/', parentsRoute)
 
   app.use('/api/children', childrenRoute)
+
+  app.use('/api/images', express.static('images'), imagesRoute)
 
 
 

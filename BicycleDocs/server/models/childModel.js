@@ -16,8 +16,7 @@ const childSchema= new mongoose.Schema({
     },
 
     image:{
-        type: String, 
-        require: true
+        type: mongoose.Schema.Types.ObjectId, ref: 'images'
     },
    
 

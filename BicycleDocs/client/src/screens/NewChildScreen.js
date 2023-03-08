@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import ImageUploader from 'react-images-upload';
+import axios from 'axios';
 
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -15,6 +16,7 @@ const NewChildScreen=()=>{
     const [showImage, setShowImage]= useState();
     const [file, setFile]= useState();
     const [birthDate, setBirthDate]= useState();
+    const [imageToInsert, setImageToInsert]= useState();
 
     const parent= JSON.parse(localStorage.getItem('parent'));
 
@@ -44,8 +46,25 @@ const NewChildScreen=()=>{
 
             console.log(kid)
 
+            submitImage();
+
+            
+
         }
     })
+
+    const submitImage=  ()=>{
+        
+
+        const formData= new FormData();
+        formData.append('image', file);
+
+        const result=  axios.post('http://localhost:5000/api/images/add-image', formData, {headers: {"Content-Type": 'multipart/form-data'}})
+        .then(res=>{
+            console.log(res.data);
+        })
+       
+    }
     
 
 

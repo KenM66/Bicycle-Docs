@@ -1,11 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getChildrenByParentId } from "../actions/ChildActions";
 import ChildCard from "../components/cards/ChildCard";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
 
 const ChildrenScreen=()=>{
+
+    const navigate= useNavigate();
 
     const parent= JSON.parse(localStorage.getItem('parent'));
     // console.log(parent);
@@ -14,7 +17,7 @@ const ChildrenScreen=()=>{
 
     const {loading, error, success, children}= getChildrenByParentState;
 
-  
+    const frontImageTag= 'http://localhost:5000/api/images/image-by-id/'
 
     const dispatch= useDispatch();
 
@@ -42,6 +45,10 @@ const ChildrenScreen=()=>{
         return age;
 
 
+    }
+
+    const routeToNewChild=()=>{
+        navigate('/new-child', {replace: true})
     }
 
 
@@ -73,7 +80,7 @@ const ChildrenScreen=()=>{
                      {(success && children && children.length>0)  &&(
                         children.map(kid=>{
                             return <div>
-                                <ChildCard id={kid._id} image= {kid.image} name= {kid.firstName+' '+ kid.lastName} age= {getChildAge(kid.dateOfBirth)} bikes='1' regActive='1'/>
+                                <ChildCard id={kid._id} image= {frontImageTag+kid.image} name= {kid.firstName+' '+ kid.lastName} age= {getChildAge(kid.dateOfBirth)} bikes='1' regActive='1'/>
                             </div>
                         })
                        
@@ -103,7 +110,7 @@ const ChildrenScreen=()=>{
 
             </div> <br/>
 
-            <a style={{fontWeight:'bold'}} href='*'>Add Child</a>
+            <button className="btn btn-primary" style={{fontWeight:'bold'}} onClick={()=> routeToNewChild()}>Add Child</button>
 
         </div>
     )
