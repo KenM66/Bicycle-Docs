@@ -10,7 +10,7 @@ import { subscribeReducer } from './reducers/SubscriptionReducers';
 import { addAddressToSchoolReducer, saveAddressReducer } from './reducers/AddressReducers';
 import { getCurrentSeasonsBySchoolReducer, getSeasonByIdReducer, createNewSeasonReducer } from './reducers/SeasonsReducer';
 import { getParentByUserIdReducer, saveParentReducer } from './reducers/ParentReducers';
-import { getChildrenByParentReducer } from './reducers/ChildrenReducer';
+import { addChildReducer, getChildrenByParentReducer } from './reducers/ChildrenReducer';
 
 const finalReducer= combineReducers({
     getPriceReducer: getPriceReducer,
@@ -29,7 +29,8 @@ const finalReducer= combineReducers({
     saveParentReducer: saveParentReducer,
     parentLoginReducer: parentLoginReducer,
     getParentByUserIdReducer: getParentByUserIdReducer,
-    getChildrenByParentReducer: getChildrenByParentReducer
+    getChildrenByParentReducer: getChildrenByParentReducer,
+    addChildReducer: addChildReducer
     
 })
 

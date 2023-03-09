@@ -9,16 +9,27 @@ import axios from 'axios';
 
 
 import "react-datepicker/dist/react-datepicker.css";
+import Loader from '../components/Loader';
+import { addNewChild } from '../actions/ChildActions';
 
 const NewChildScreen=()=>{
 
     const [image, setImage]= useState();
-    const [showImage, setShowImage]= useState();
     const [file, setFile]= useState();
     const [birthDate, setBirthDate]= useState();
     const [imageToInsert, setImageToInsert]= useState();
+    const [isComplete, setIsComplete]= useState(false);
+
+    const dispatch= useDispatch();
+
+    const addNewChildState= useSelector((state)=> state.addChildReducer);
+
+    let {loading, error, child}= addNewChildState;
 
     const parent= JSON.parse(localStorage.getItem('parent'));
+
+    let isImageUploading= false;
+    
 
     useEffect(() => {
 
@@ -28,6 +39,30 @@ const NewChildScreen=()=>{
         }
      
     }, [file])
+
+    useEffect(()=>{
+
+        if(imageToInsert){
+            isImageUploading= true;
+            axios.put(`http://localhost:5000/api/children/add-image-to-child/${child._id}/${imageToInsert}`)
+            .then(res=>{
+                console.log(res);
+                isImageUploading= false;
+                setIsComplete(true);
+            })
+        }
+
+    }, [imageToInsert])
+
+    useEffect(()=>{
+        if(child){
+            submitImage();
+        }
+
+    },[child])
+
+
+
 
     const newChildSchema= Yup.object().shape({
         firstName: Yup.string().required("First name is required."),
@@ -46,7 +81,9 @@ const NewChildScreen=()=>{
 
             console.log(kid)
 
-            submitImage();
+            dispatch(addNewChild({firstName: kid.firstName, lastName: kid.lastName, dateOfBirth: kid.dob}, parent._id));
+
+           
 
             
 
@@ -59,9 +96,10 @@ const NewChildScreen=()=>{
         const formData= new FormData();
         formData.append('image', file);
 
-        const result=  axios.post('http://localhost:5000/api/images/add-image', formData, {headers: {"Content-Type": 'multipart/form-data'}})
+        axios.post('http://localhost:5000/api/images/add-image', formData, {headers: {"Content-Type": 'multipart/form-data'}})
         .then(res=>{
             console.log(res.data);
+            setImageToInsert(res.data);
         })
        
     }
@@ -70,6 +108,11 @@ const NewChildScreen=()=>{
 
     return(
     <div> <br/>
+
+        {(loading || isImageUploading) && (<Loader/>)}
+        {error &&(<Error/>)}
+
+        { (!loading && !error && !isImageUploading && !isComplete) &&(
         <div style={{backgroundColor: "#89cff0", width: "1000px", height: "700px", margin: "0 auto"}}>
 
             <div><br/>
@@ -100,7 +143,7 @@ const NewChildScreen=()=>{
             <h5>Child Photo</h5>
             <div>
             <input
-           fileName={file}
+           filename={file}
            onChange={e => setFile(e.target.files[0])}
            type="file"
            accept='image/*'
@@ -119,7 +162,7 @@ const NewChildScreen=()=>{
             </div>
 
         </div>
-
+        )}
         </div>
       
     )

@@ -21,3 +21,23 @@ export const getChildrenByParentReducer=(state={}, action)=>{
         default: return state;
     }
 }
+
+export const addChildReducer=(state={}, action)=>{
+    switch(action.type){
+        case 'ADD_CHILD_REQUEST': return{
+            ...state, 
+            loading: true
+        }
+        case 'ADD_CHILD_SUCCESS': return{
+            ...state, 
+            loading: false,
+            child: action.payload
+        }
+        case 'ADD_CHILD_FAILED': return{
+            ...state, 
+            loading: false, 
+            error: true
+        }
+        default: return state;
+    }
+}
