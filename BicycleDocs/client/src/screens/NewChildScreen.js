@@ -48,8 +48,10 @@ const NewChildScreen=()=>{
             .then(res=>{
                 console.log(res);
                 isImageUploading= false;
-                setIsComplete(true);
+                
             })
+
+            setIsComplete(true);
         }
 
     }, [imageToInsert])
@@ -115,7 +117,7 @@ const NewChildScreen=()=>{
         { (!loading && !error && !isImageUploading && !isComplete) &&(
         <div style={{backgroundColor: "#89cff0", width: "1000px", height: "700px", margin: "0 auto"}}>
 
-            <div><br/>
+          { !isComplete && ( <div><br/>
 
             <h4>Enter Your Child's Information</h4><br/>
 
@@ -159,10 +161,26 @@ const NewChildScreen=()=>{
 
             
 
-            </div>
+            </div> )}
+                
+         
+
+
+
 
         </div>
         )}
+           {isComplete &&(
+                <div style={{backgroundColor: "#89cff0", width: '1000px', margin: '0 auto'}}><br/><br/>
+                    <h5>{child.firstName} {child.lastName} has been successfully created.  
+                    All children must have bicycles assigned to them
+                    before being registered with a school or organization.</h5>
+                    <br/><br/>
+
+                    <button className='btn btn-info'>Add Bike</button><br/><br/>
+                    <button className='btn btn-primary'>Return to Portal</button><br/><br/>
+                </div>
+            )}
         </div>
       
     )
