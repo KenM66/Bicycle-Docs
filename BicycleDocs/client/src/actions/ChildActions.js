@@ -26,3 +26,17 @@ export const addNewChild=(child, parentId)=> dispatch=>{
         console.log(err);
     })
 }
+
+export const getChildById= (id)=> dispatch=>{
+    dispatch({type: 'GET_CHILDBYID_REQUEST'});
+
+    axios.get(`http://localhost:5000/api/children/child-by-id/${id}`).then(res=>{
+        console.log(res);
+        dispatch({type: 'GET_CHILDBYID_SUCCESS', payload: res.data});
+    }).catch(err=>{
+        dispatch({type: 'GET_CHILDBYID_FAILED'})
+        console.log(err);
+    })
+
+
+}

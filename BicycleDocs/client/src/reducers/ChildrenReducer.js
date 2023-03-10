@@ -41,3 +41,26 @@ export const addChildReducer=(state={}, action)=>{
         default: return state;
     }
 }
+
+export const getChildByIdReducer= (state={}, action)=>{
+    switch(action.type){
+        case 'GET_CHILDBYID_REQUEST': return{
+            ...state, 
+            loading: true
+        }
+        case 'GET_CHILDBYID_SUCCESS': return{
+            ...state, 
+            loading: false, 
+            success: true,
+            child: action.payload
+        }
+
+        case 'GET_CHILDBYID_FAILED': return{
+            ...state, 
+            loading: false, 
+            
+        }
+
+        default: return state
+    }
+}

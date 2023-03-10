@@ -35,12 +35,12 @@ function App() {
 
   const {school} = schoolState;
 
-  const testParent= localStorage.getItem('parent');
-  if(testParent)
-  console.log(JSON.parse(localStorage.getItem('parent')));
+  // const testParent= localStorage.getItem('parent');
+  // if(testParent)
+  // console.log(JSON.parse(localStorage.getItem('parent')));
 
   useEffect(()=>{
-    if(currentUser)
+    if(currentUser && currentUser.userType==='School')
     dispatch(getSchoolByUserId(currentUser._id));
   },[])
 
