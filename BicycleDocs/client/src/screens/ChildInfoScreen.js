@@ -74,9 +74,9 @@ const ChildInfoScreen=()=>{
 
                 <div>
                     <div style={{display: 'flex',  flexDirection: 'row', justifyContent:'center'}}>
-                    <div align='left' style={{marginLeft: '-1000px'}}>
+                    <div align='left'>
                     {(image) &&(<img src= {imageSource+image}  
-                    style={{height: "200px" ,width: '230px'}}/>)} <br/><br/>
+                    style={{height: "150px" ,width: '170px'}}/>)} <br/><br/>
                     <input
                      filename={file}
                      onChange={e => setFile(e.target.files[0])}
@@ -93,6 +93,7 @@ const ChildInfoScreen=()=>{
                     <h4>Age: {getChildAge(child.dateOfBirth)}</h4>
                     </div>
                    
+                  
 
                 </div> 
                        
@@ -102,8 +103,19 @@ const ChildInfoScreen=()=>{
                 
                 )}
                
-                <br/>
-            
+                <br/><br/><br/>
+                        <h4>Active Registrations</h4>
+
+                        <div style={{width: '750px', height: '100px', backgroundColor: 'gray', margin: '0 auto'}}>
+                                    No active registrations
+                        </div>
+                        <br/><br/>
+
+                        <h4>Bicycles</h4>
+
+                        <div style={{width: '750px', height: '150px', margin: '0 auto', backgroundColor: 'gray'}}> No bicycles</div> <br/><br/>
+
+                        <button className="btn btn-warning">Add Bicycle</button><br/><br/>
           
             </div>
         </div>
