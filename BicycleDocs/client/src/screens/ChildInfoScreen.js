@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { getChildById } from "../actions/ChildActions";
 import Loader from "../components/Loader";
+import BicycleCard from "../components/cards/BicycleCard";
 
 const ChildInfoScreen=()=>{
 
@@ -103,7 +104,7 @@ const ChildInfoScreen=()=>{
                 
                 )}
                
-                <br/><br/><br/>
+                <br/>
                         <h4>Active Registrations</h4>
 
                         <div style={{width: '750px', height: '100px', backgroundColor: 'gray', margin: '0 auto'}}>
@@ -113,11 +114,14 @@ const ChildInfoScreen=()=>{
 
                         <h4>Bicycles</h4>
 
-                        <div style={{width: '750px', height: '150px', margin: '0 auto', backgroundColor: 'gray'}}> No bicycles</div> <br/><br/>
+                        <div style={{width: '750px', height: '215px', margin: '0 auto', backgroundColor: 'yellow', overflowY: 'scroll'}}> 
+                                <BicycleCard brand= 'Huffy' model='Hardtail' color='Blue' serialNumber='SQ127964345' image='https://www.huffybikes.com/media/catalog/product/cache/4f821af9573d574e43ab6dcbedb6481a/7/6/76838-1.jpg'/>
+                                <BicycleCard brand= 'Huffy' model='Hardtail' color='Blue' serialNumber='SQ127964345' image='https://www.huffybikes.com/media/catalog/product/cache/4f821af9573d574e43ab6dcbedb6481a/7/6/76838-1.jpg'/>
+                        </div> <br/><br/>
 
                         <button className="btn btn-warning">Add Bicycle</button><br/><br/>
           
-            </div>
+            </div><br/>
         </div>
     )
 
