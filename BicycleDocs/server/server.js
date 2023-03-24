@@ -29,6 +29,8 @@ var childrenRoute= require('./routes/childrenRoute')
 
 var imagesRoute= require('./routes/imagesRoute')
 
+var bicyclesRoute= require('./routes/bicyclesRoute')
+
 const {application} = require("express");  
 
 
@@ -63,6 +65,8 @@ app.use(express.urlencoded({
   app.use('/api/children', childrenRoute)
 
   app.use('/api/images', express.static('images'), imagesRoute)
+
+  app.use('/api/bicycles', bicyclesRoute)
 
 
 

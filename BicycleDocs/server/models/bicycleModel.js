@@ -8,6 +8,11 @@ const bicycleSchema= new Schema({
         type: String, 
         require: true
     },
+    model:{
+        type: String, 
+        require: true  
+        
+    },
 
     color: {
         type: String,
@@ -19,6 +24,10 @@ const bicycleSchema= new Schema({
         type: String,
         require: true
     },
+    image:{
+        type: mongoose.Schema.Types.ObjectId, ref: 'images'
+    },
+   
 
     child:{
         type: mongoose.Schema.Types.ObjectId, ref: "children"
