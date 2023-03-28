@@ -36,4 +36,17 @@ router.put('/add-image-to-bicycle/:bicycle_id/:image_id', (req,res)=>{
       })
 })
 
+router.get('/bicycles-by-child/:child_id', (req, res)=>{
+    Bicycle.find({"child":{_id: req.params.child_id}}, (err, docs)=>{
+        if(!err){
+            res.send(docs);
+        }
+        else{
+            console.log(err);
+            return res.status(400).json({message: 'The following error occurred \n'+err})
+
+        }
+    })
+})
+
 module.exports= router;
