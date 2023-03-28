@@ -23,6 +23,7 @@ import ParentNavBar from './components/ParentNavbar';
 import ChildrenScreen from './screens/ChildrenScreen';
 import ChildInfoScreen from './screens/ChildInfoScreen';
 import NewChildScreen from './screens/NewChildScreen';
+import NewBicycleScreen from './screens/NewBicycleScreen';
 
 
 function App() {
@@ -80,6 +81,7 @@ function App() {
             <Route path= '/children' element={(<ChildrenScreen/>)}/>
             <Route path= '/child/:id' element={(<ChildInfoScreen/>)}/>
             <Route path= '/new-child' element={(<NewChildScreen/>)}/>
+            <Route path='/new-bicycle/:childId' element={(<NewBicycleScreen/>)}/>
           </Routes>
         </BrowserRouter>
 

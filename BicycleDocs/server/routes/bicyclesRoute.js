@@ -4,7 +4,7 @@ const router= express.Router();
 const Bicycle= require('../models/bicycleModel');
 
 router.post('/add-bicycle/:childId', (req, res)=>{
-    const bicycle= req.body;
+    const bicycle= req.body.bicycle;
     console.log(bicycle);
 
     const bicycleModel= new Bicycle({
@@ -26,6 +26,14 @@ router.post('/add-bicycle/:childId', (req, res)=>{
             res.send(body);
         }
     })
+})
+
+router.put('/add-image-to-bicycle/:bicycle_id/:image_id', (req,res)=>{
+    Bicycle.findByIdAndUpdate(req.params.bicycle_id, {
+        image: req.params.image_id
+    }, (err)=>{
+        console.log(err);
+      })
 })
 
 module.exports= router;

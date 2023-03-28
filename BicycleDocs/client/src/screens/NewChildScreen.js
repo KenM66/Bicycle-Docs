@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import ImageUploader from 'react-images-upload';
+import Error from '../components/Error';
 import axios from 'axios';
 
 

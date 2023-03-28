@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 import { useEffect } from "react";
 import { useState } from "react";
@@ -24,6 +24,8 @@ const ChildInfoScreen=()=>{
     console.log(params);
 
     const dispatch= useDispatch();
+
+    const navigate= useNavigate();
 
      useEffect(()=>{
         dispatch(getChildById(params.id));
@@ -53,6 +55,9 @@ const ChildInfoScreen=()=>{
 
     }
 
+    const routeToNewBicycle=()=>{
+        navigate(`/new-bicycle/${params.id}`, {replace: true})
+    }
   
    
 
@@ -119,7 +124,7 @@ const ChildInfoScreen=()=>{
                                 <BicycleCard brand= 'Huffy' model='Hardtail' color='Blue' serialNumber='SQ127964345' image='https://www.huffybikes.com/media/catalog/product/cache/4f821af9573d574e43ab6dcbedb6481a/7/6/76838-1.jpg'/>
                         </div> <br/><br/>
 
-                        <button className="btn btn-warning">Add Bicycle</button><br/><br/>
+                        <button className="btn btn-warning" onClick={routeToNewBicycle}>Add Bicycle</button><br/><br/>
           
             </div><br/>
         </div>
