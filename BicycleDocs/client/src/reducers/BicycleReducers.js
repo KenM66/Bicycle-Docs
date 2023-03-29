@@ -19,3 +19,24 @@ export const addBicycleReducer= (state={}, action)=>{
         default: return state;
     }
 }
+
+export const getBicyclesByChildIdReducer= (state={}, action)=>{
+    switch(action.type){
+    case 'GET_BICYCLESBYCHILD_REQUEST': return{
+        ...state, 
+        bikesLoading: true
+    }
+    case 'GET_BICYCLESBYCHILD_SUCCESS': return{
+        ...state, 
+        bikesLoading: false, 
+        bikes: action.payload
+    }
+    case 'GET_BICYCLESBYCHILD_FAILED': return{
+        ...state, 
+        bikesLoading: false, 
+        bikesError: true
+    }
+    default: return state;
+    
+  }
+}

@@ -15,3 +15,17 @@ export const addNewBicycle=(bicycle, childId)=> dispatch=>{
     })
 
 }
+
+export const getBicyclesByChild= (childId)=> dispatch =>{
+    dispatch({type: 'GET_BICYCLESBYCHILD_REQUEST'});
+
+    axios.get(`http://localhost:5000/api/bicycles/bicycles-by-child/${childId}`).
+    then(res=>{
+        console.log(res);
+        dispatch({type: 'GET_BICYCLESBYCHILD_SUCCESS', payload: res.data});
+        
+    }).catch(err=>{
+        dispatch({type: 'GET_BICYCLESBYCHILD_FAILED'});
+        console.log(err);
+    })
+}

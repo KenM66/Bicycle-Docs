@@ -6,6 +6,7 @@ import { useState } from "react";
 import { getChildById } from "../actions/ChildActions";
 import Loader from "../components/Loader";
 import BicycleCard from "../components/cards/BicycleCard";
+import { getBicyclesByChild } from "../actions/BicycleActions";
 
 const ChildInfoScreen=()=>{
 
@@ -19,6 +20,15 @@ const ChildInfoScreen=()=>{
     const getChildByIdState= useSelector((state)=> state.getChildByIdReducer);
 
     let {loading, error, success, child}= getChildByIdState;
+
+    console.log(getChildByIdState);  //works
+    
+    const getBikesByChildState= useSelector((state)=> state.getBicyclesByChildIdReducer);
+
+    console.log(getBikesByChildState);  //prints undefined
+
+    let {bikesLoading, bikesError, bikes}= getBikesByChildState;
+
 
     const params= useParams();
     console.log(params);
@@ -36,9 +46,18 @@ const ChildInfoScreen=()=>{
 
     useEffect(()=>{
         if(child){
-            setImage(child.image)
+            setImage(child.image);
+
+            
+
+            dispatch(getBicyclesByChild(child._id));
         }
+      
     },[child])
+
+    useEffect(()=>{
+        console.log(bikes)
+    }, [bikes])
 
     const getChildAge=(dateOfBirth)=>{
         const today= new Date();
@@ -74,8 +93,8 @@ const ChildInfoScreen=()=>{
             <br/>
           
             <div className="square border border-info" style={{width: '1500px', margin: '0 auto'}}><br/>
-                {loading &&(<Loader/>)}
-                {error &&(<Error/>)}
+                {(loading || bikesLoading) &&(<Loader/>)}
+                {(error && bikesError) &&(<Error/>)}
                {success && ( 
 
                 <div>
@@ -120,8 +139,27 @@ const ChildInfoScreen=()=>{
                         <h4>Bicycles</h4>
 
                         <div style={{width: '750px', height: '215px', margin: '0 auto', backgroundColor: 'yellow', overflowY: 'scroll'}}> 
-                                <BicycleCard brand= 'Huffy' model='Hardtail' color='Blue' serialNumber='SQ127964345' image='https://www.huffybikes.com/media/catalog/product/cache/4f821af9573d574e43ab6dcbedb6481a/7/6/76838-1.jpg'/>
-                                <BicycleCard brand= 'Huffy' model='Hardtail' color='Blue' serialNumber='SQ127964345' image='https://www.huffybikes.com/media/catalog/product/cache/4f821af9573d574e43ab6dcbedb6481a/7/6/76838-1.jpg'/>
+
+                                {(bikes && bikes.length>0) &&(
+                                    
+                                    bikes.map(bike=>{
+                                        return <div>
+                                            
+                                         <BicycleCard brand= {bike.brand} model={bike.model} color= {bike.color} serialNumber= {bike.serialNumber} image={imageSource+bike.image}/> 
+                                        </div>
+                                    })
+
+                                )
+                                    
+                                }
+
+                                {(!bikes|| bikes.length===0) &&(
+                                    <h5>No bicycles added for your child yet</h5>
+                                )}
+                                {/* <BicycleCard brand= 'Huffy' model='Hardtail' color='Blue' serialNumber='SQ127964345' image='https://www.huffybikes.com/media/catalog/product/cache/4f821af9573d574e43ab6dcbedb6481a/7/6/76838-1.jpg'/>
+                                <BicycleCard brand= 'Huffy' model='Hardtail' color='Blue' serialNumber='SQ127964345' image='https://www.huffybikes.com/media/catalog/product/cache/4f821af9573d574e43ab6dcbedb6481a/7/6/76838-1.jpg'/> */}
+
+
                         </div> <br/><br/>
 
                         <button className="btn btn-warning" onClick={routeToNewBicycle}>Add Bicycle</button><br/><br/>

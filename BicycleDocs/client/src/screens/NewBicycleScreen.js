@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { useState, useEffect } from "react";
-import { addNewBicycle } from "../actions/BiccycleActions";
+import { addNewBicycle } from "../actions/BicycleActions";
 import Loader from '../components/Loader';
 import Error from '../components/Error';
 import axios from 'axios';
