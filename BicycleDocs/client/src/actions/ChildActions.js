@@ -11,7 +11,7 @@ export const getChildrenByParentId=(parentId)=> dispatch=>{
     .catch(err=>{
         dispatch({type: 'GET_CHILDRENBYPARENT_FAILED'});
         console.log(err);
-    })
+    })//Testing
 }
 
 export const addNewChild=(child, parentId)=> dispatch=>{
