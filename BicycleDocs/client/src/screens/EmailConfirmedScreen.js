@@ -4,6 +4,7 @@ import Loader from "../components/Loader"
 import Error from "../components/Error"
 import { useParams } from "react-router-dom";
 import {updateEmailConfirmed} from "../actions/UserActions"
+import React from 'react';
 
 const EmailConfirmedScreen=()=>{
 

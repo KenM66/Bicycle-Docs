@@ -6,6 +6,7 @@ import { getSeasonById } from "../actions/SeasonActions";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
 import UpdateSeason from "../components/UpdateSeason";
+import React from 'react';
 
 
 const SeasonInfoScreen = ()=>{
@@ -118,7 +119,7 @@ const SeasonInfoScreen = ()=>{
         })
         setRegStatus(!regStatus);
         console.log(regStatus);
-        location.reload();
+        window.location.reload();
       }
 
       const showEditSeason= ()=>{

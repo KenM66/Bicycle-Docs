@@ -7,6 +7,7 @@ import { addNewBicycle } from "../actions/BicycleActions";
 import Loader from '../components/Loader';
 import Error from '../components/Error';
 import axios from 'axios';
+import React from 'react';
 
 const NewBicycleScreen=()=>{
 

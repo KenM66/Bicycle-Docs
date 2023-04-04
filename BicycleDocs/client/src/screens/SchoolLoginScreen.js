@@ -4,6 +4,7 @@ import { getSchoolByUserId } from "../actions/SchoolActions"
 import { schoolLogin } from "../actions/UserActions"
 import Error from "../components/Error"
 import Loader from "../components/Loader"
+import React from 'react';
 
 
 const SchoolLoginScreen=()=>{

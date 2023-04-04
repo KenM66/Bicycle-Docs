@@ -7,6 +7,8 @@ import { getChildById } from "../actions/ChildActions";
 import Loader from "../components/Loader";
 import BicycleCard from "../components/cards/BicycleCard";
 import { getBicyclesByChild } from "../actions/BicycleActions";
+import Error from "../components/Error";
+import React from 'react';
 
 const ChildInfoScreen=()=>{
 

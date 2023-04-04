@@ -5,6 +5,7 @@ import { getChildrenByParentId } from "../actions/ChildActions";
 import ChildCard from "../components/cards/ChildCard";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
+import React from 'react';
 
 const ChildrenScreen=()=>{
 

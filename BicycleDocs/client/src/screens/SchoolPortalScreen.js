@@ -1,3 +1,4 @@
+import React from 'react';
 const { useState } = require("react")
 const { useSelector } = require("react-redux")
 

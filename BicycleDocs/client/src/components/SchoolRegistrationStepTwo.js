@@ -13,6 +13,7 @@ import Error from './Error'
 
 
 
+
  function SchoolRegistrationStepTwo(props) {
 
 

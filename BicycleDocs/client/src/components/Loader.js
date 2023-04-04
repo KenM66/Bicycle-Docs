@@ -1,4 +1,5 @@
 import bicycle from '../logos/bicycle-GIF.gif';
+import React from 'react';
 
 
 export default function Loader() {

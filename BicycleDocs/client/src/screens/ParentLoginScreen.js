@@ -4,6 +4,8 @@ import { getParentByUserId } from "../actions/ParentActions";
 import { parentLogin } from "../actions/UserActions";
 import Error from "../components/Error"
 import Loader from "../components/Loader"
+import React from 'react';
+
 
 const ParentLoginScreen=()=>{
 

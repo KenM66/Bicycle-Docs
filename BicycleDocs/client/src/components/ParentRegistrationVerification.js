@@ -5,6 +5,7 @@ import { saveParent } from '../actions/ParentActions';
 import Loader from './Loader';
 import Error from './Error';
 import { useEffect } from 'react';
+import React from 'react';
 
 const ParentRegistrationVerification=(props)=>{
     const dispatch= useDispatch();

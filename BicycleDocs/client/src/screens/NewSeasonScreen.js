@@ -10,6 +10,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { createNewSeason } from '../actions/SeasonActions';
 import Loader from '../components/Loader';
+import Error from '../components/Error';
 
 const NewSeasonScreen=()=>{
 

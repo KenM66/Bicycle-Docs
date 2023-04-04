@@ -6,6 +6,7 @@ import Error from "../Error"
 import { getPrice } from "../../actions/PriceActions";
 import { subscribe } from '../../actions/SubscriptionActions';
 import { useNavigate } from "react-router-dom";
+import React from 'react';
 
 
 

@@ -13,6 +13,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Loader from '../components/Loader';
 import { addNewChild } from '../actions/ChildActions';
 
+
 const NewChildScreen=()=>{
 
     const [image, setImage]= useState();

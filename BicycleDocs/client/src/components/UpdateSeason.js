@@ -50,7 +50,7 @@ const UpdateSeason= (props)=>{
             axios.put(`http://localhost:5000/api/seasons/update-season/${props.id}`, {season: season})
             .then(res=>{
                 console.log(res);
-                location.reload();
+                window.location.reload();
             })
             .catch(err=>{
                 window.alert(err);

@@ -24,6 +24,8 @@ import ChildrenScreen from './screens/ChildrenScreen';
 import ChildInfoScreen from './screens/ChildInfoScreen';
 import NewChildScreen from './screens/NewChildScreen';
 import NewBicycleScreen from './screens/NewBicycleScreen';
+import React from 'react';
+
 
 
 function App() {
