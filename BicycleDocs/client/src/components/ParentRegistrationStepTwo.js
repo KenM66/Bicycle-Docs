@@ -37,7 +37,7 @@ const ParentRegistrationStepTwo=(props)=>{
             <h6>Note:  Home address will need to match the address on file with your child's school/organization.</h6>
 
             <div style={{position: 'relative'}}>
-                <label htmlFor="streetAddress">Street Address</label>
+                <label htmlFor="address">Street Address</label>
                 <input name="address" type="text" id="address" value={formik.values.address} onChange={formik.handleChange} onBlur={formik.handleBlur}/>
                 <div>{formik.errors.address && formik.touched.address?(<div><h5 style={{color: "red"}}>{formik.errors.address}</h5></div>):null}</div><br/>
 

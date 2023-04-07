@@ -44,3 +44,15 @@ export const getSchoolByUserId= (userId)=>dispatch=>{
     })
 
 }
+
+export const getSchoolBySchoolNumber= (number)=> dispatch=>{
+    dispatch({type: 'GET_SCHOOLBYSCHOOLNUMBER_REQUEST'})
+
+    axios.get(`http://localhost:5000/api/schools/getschoolbynumber/${number}`).then(res=>{
+        console.log(res);
+        dispatch({type: 'GET_SCHOOLBYSCHOOLNUMBER_SUCCESS', payload: res.data})
+    }).catch(err=>{
+        console.log(err);
+        dispatch({type: 'GET_SCHOOLBYSCHOOLNUMBER_FAILED'});
+    })
+}

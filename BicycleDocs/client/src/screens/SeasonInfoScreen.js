@@ -1,12 +1,12 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, React } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom"
 import { getSeasonById } from "../actions/SeasonActions";
 import Error from "../components/Error";
 import Loader from "../components/Loader";
 import UpdateSeason from "../components/UpdateSeason";
-import React from 'react';
+
 
 
 const SeasonInfoScreen = ()=>{
