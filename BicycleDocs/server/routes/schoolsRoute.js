@@ -25,7 +25,7 @@ router.get("/getallschools", (req, res)=>{
 
 router.get('/getschoolbynumber/:id', (req,res)=>{
 
-    School.find({'id': req.params.id}, (err, docs)=>{
+    School.findOne({'id': req.params.id}, (err, docs)=>{
         if(err){
             return res.status(400).json({message: 'something went wrong'});
         }

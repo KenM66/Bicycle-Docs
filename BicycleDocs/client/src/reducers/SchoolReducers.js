@@ -44,10 +44,11 @@ export const getSchoolByUserReducer=(state={}, action) =>{
     }
 }
 
-export const getSchoolBySchoolNumber=(state={}, action)=>{
+export const getSchoolBySchoolNumberReducer=(state={}, action)=>{
     switch(action.type){
         case 'GET_SCHOOLBYSCHOOLNUMBER_REQUEST': return{
             ...state, 
+         
             loading: true
         }
         case 'GET_SCHOOLBYSCHOOLNUMBER_SUCCESS': return{

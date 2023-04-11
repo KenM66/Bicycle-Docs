@@ -63,4 +63,16 @@ router.post('/newaddress', async(req,res)=>{
 
 })
 
+router.get('/address-by-id/:id', async(req,res)=>{
+    Address.findById({'_id': req.params.id}, (err, docs)=>{
+        if(err){
+            console.log(err);
+            res.send(400).json({message: 'The following error occurred...\n'+err});
+        }
+        else{
+            res.send(docs);
+        }
+    })
+})
+
 module.exports= router;

@@ -16,7 +16,7 @@ export const addAddressToSchoolReducer=(state={}, action)=>{
             errorAddressToSchool: true
         }
 
-        default: return state
+        default: return state;
 
     }
 }
@@ -39,7 +39,7 @@ export const getAddressByValuesReducer=(state={}, action)=>{
             
         }
 
-        default: return state
+        default: return state;
     }
 }
 
@@ -61,6 +61,26 @@ export const saveAddressReducer=(state={}, action)=>{
             loadingSaveAddress: false,
             errorSaveAddress: true
         }
-        default: return state
+        default: return state;
+    }
+}
+
+export const getAddressByIdReducer=(state={}, action)=>{
+    switch(action.type){
+        case 'GET_ADDRESSBYID_REQUEST': return{
+           ...state, 
+           loadingAddress: true 
+        }
+        case 'GET_ADDRESSBYID_SUCCESS': return{
+            ...state, 
+            loadingAddress: false,
+            address: action.payload
+        }
+        case 'GET_ADDRESSBYID_FAILED': return{
+            ...state, 
+            loadingAddress: false, 
+            errorAddress: true
+        }
+        default: return state;
     }
 }

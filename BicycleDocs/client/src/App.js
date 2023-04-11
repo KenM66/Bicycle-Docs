@@ -1,3 +1,4 @@
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import bootstrap from '../node_modules/bootstrap/dist/css/bootstrap.min.css'
@@ -24,6 +25,7 @@ import ChildrenScreen from './screens/ChildrenScreen';
 import ChildInfoScreen from './screens/ChildInfoScreen';
 import NewChildScreen from './screens/NewChildScreen';
 import NewBicycleScreen from './screens/NewBicycleScreen';
+import RegisterLookupScreen from './screens/RegisterLookupScreen';
 
 
 
@@ -84,6 +86,7 @@ function App() {
             <Route path= '/child/:id' element={(<ChildInfoScreen/>)}/>
             <Route path= '/new-child' element={(<NewChildScreen/>)}/>
             <Route path='/new-bicycle/:childId' element={(<NewBicycleScreen/>)}/>
+            <Route path= '/lookup-school' element={(<RegisterLookupScreen/>)} />
           </Routes>
         </BrowserRouter>
 
