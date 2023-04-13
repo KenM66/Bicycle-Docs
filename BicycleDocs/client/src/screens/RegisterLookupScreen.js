@@ -7,6 +7,7 @@ import { useFormik } from 'formik';
 import { getSchoolBySchoolNumber } from '../actions/SchoolActions';
 import Loader from "../components/Loader";
 import Error from "../components/Error";
+import { getAddressById } from '../actions/AddressActions';
 
 const RegisterLookupScreen=()=>{
 
@@ -16,11 +17,18 @@ const RegisterLookupScreen=()=>{
 
     const {loading, error, success, school}= getSchoolByNumberState;
 
+    const getAddressByIdState=
+    useSelector(state=> state.getAddressByIdReducer);
+
+    const {loadingAddress, errorAddress, address}= getAddressByIdState;
+
     const dispatch= useDispatch();
 
     useEffect(()=>{
         if(school){
-            console.log(school);
+          
+         dispatch(getAddressById(school.billingAddress));
+        
            
         }
     },[school])
@@ -37,7 +45,8 @@ const RegisterLookupScreen=()=>{
         validationSchema: lookUpSchema, 
         onSubmit:(values)=>{
             dispatch(getSchoolBySchoolNumber(values.number))
-            console.log(school.name);
+           
+            console.log(school);
             
         }
     })
@@ -55,14 +64,17 @@ const RegisterLookupScreen=()=>{
             
             {loading &&(<Loader/>)}
             {error && (<Error/>)}
-            {(success) &&(
+            {(success && address) &&(
                 <div className='square border border-info' style={{width: '1100px', margin: '0 auto'}}>
                     {school &&
                     ( 
-                 <div>
-                    <h5>{school.name}</h5>
-                    <h5></h5>
-                </div>
+                    <div>
+                    
+                        <h5>{school.name}</h5>
+                        <h5>{address.addressLine}</h5>
+                        <h5>{address.city}, {address.state} {address.postalCode}</h5>
+                    
+                    </div>
                   
                     
                     )}

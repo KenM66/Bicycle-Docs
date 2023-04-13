@@ -26,7 +26,24 @@ export const saveAddress= (address)=> dispatch=>{
         console.log(res.data);
     })
     .catch(err=>{
-        dispatch({type: 'SAVE_ADDRESS_FAILED'})
-        console.log(err)
+        dispatch({type: 'SAVE_ADDRESS_FAILED'});
+        console.log(err);
     })
+}
+
+export const getAddressById= (id)=> dispatch=>{
+        dispatch({type: 'GET_ADDRESSBYID_REQUEST'});
+
+        axios.get(`http://localhost:5000/api/addresses/address-by-id/${id}`).then(res=>{
+          
+
+            dispatch({type: 'GET_ADDRESSBYID_SUCCESS', payload: res.data});
+            console.log(res.data);
+
+        }).catch(err=>{
+            dispatch({type: 'GET_ADDRESSBYID_FAILED'});
+            console.log(err);
+        })
+
+
 }

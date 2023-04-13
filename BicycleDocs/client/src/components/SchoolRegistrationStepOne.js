@@ -50,7 +50,7 @@ export default function SchoolRegistrationStepOne(props) {
             city: props.state.city,
             state: props.state.state,
             postalCode: props.state.postalCode,
-             phone: props.state.phone
+            phone: props.state.phone
         },
        
         validationSchema: signUpSchema,
