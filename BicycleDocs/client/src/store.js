@@ -8,7 +8,7 @@ import {  getAllUsersReducer, registerNewUserReducer, updateEmailConfirmedReduce
 import { registerSchoolReducer, getSchoolByUserReducer, getSchoolBySchoolNumberReducer } from './reducers/SchoolReducers';
 import { subscribeReducer } from './reducers/SubscriptionReducers';
 import { addAddressToSchoolReducer, getAddressByIdReducer, saveAddressReducer } from './reducers/AddressReducers';
-import { getCurrentSeasonsBySchoolReducer, getSeasonByIdReducer, createNewSeasonReducer } from './reducers/SeasonsReducer';
+import { getCurrentSeasonsBySchoolReducer, getSeasonByIdReducer, createNewSeasonReducer, getActiveSeasonsBySchoolReducer } from './reducers/SeasonsReducer';
 import { getParentByUserIdReducer, saveParentReducer } from './reducers/ParentReducers';
 import { addChildReducer, getChildByIdReducer, getChildrenByParentReducer } from './reducers/ChildrenReducer';
 import { addBicycleReducer, getBicyclesByChildIdReducer } from './reducers/BicycleReducers';
@@ -37,7 +37,8 @@ const finalReducer= combineReducers({
     addBicycleReducer: addBicycleReducer,
     getBicyclesByChildIdReducer: getBicyclesByChildIdReducer,
     getSchoolBySchoolNumberReducer: getSchoolBySchoolNumberReducer,
-    getAddressByIdReducer: getAddressByIdReducer
+    getAddressByIdReducer: getAddressByIdReducer, 
+    getActiveSeasonsBySchoolReducer: getActiveSeasonsBySchoolReducer
     
 })
 

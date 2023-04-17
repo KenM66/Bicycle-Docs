@@ -60,7 +60,27 @@ export const createNewSeasonReducer= (state={}, action)=>{
             loading: false, 
             error: "Season Registration Failed."
         }
-        default: return state
+        default: return state;
     }
 
+}
+
+export const getActiveSeasonsBySchoolReducer = (state={}, action)=>{
+    switch (action.type){
+        case 'GET_ACTIVESEASONS_REQUEST' : return {
+            ...state, 
+            loading: true
+        }
+        case 'GET_ACTIVESEASONS_SUCCESS' : return{
+            ...state, 
+            loading: false, 
+            seasons: action.payload
+        }
+        case 'GET_ACTIVESEASONS_FAILED' : return{
+            ...state, 
+            loading: false, 
+            error: true
+        }
+        default: return state;
+    }
 }
