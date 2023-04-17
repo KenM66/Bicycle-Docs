@@ -64,16 +64,21 @@ const RegisterLookupScreen=()=>{
             
             {loading &&(<Loader/>)}
             {error && (<Error/>)}
-            {(success && address) &&(
-                <div className='square border border-info' style={{width: '1100px', margin: '0 auto'}}>
-                    {school &&
+            {(success) &&(
+                <div className='square border border-danger' style={{width: '1100px', margin: '0 auto'}}>
+                    {(school && address) &&
                     ( 
                     <div>
-                    
+                        <br/><br/>
                         <h5>{school.name}</h5>
                         <h5>{address.addressLine}</h5>
                         <h5>{address.city}, {address.state} {address.postalCode}</h5>
-                    
+                        <br/>
+                        <h5>Contact Representative:  </h5>
+                        <h5>{school.contactFirstName} {school.contactLastName} - {school.phone}</h5>
+                        <br/>
+                        <button className='btn btn-warning'>SELECT</button><br/><br/>
+                       
                     </div>
                   
                     

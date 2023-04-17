@@ -25,9 +25,40 @@ router.get('/getseasonsbyschool/:id', (req, res)=>{
             res.send(docs);
         }
         else{
-            return res.status(400).json({message: 'Something went wrong'})
+            return res.status(400).json({message: 'Something went wrong'});
         }
     })
+})
+
+router.get('/present-seasons-by-school-id/:id', (req, res)=>{
+    Season.find({"school": {_id: req.params.id}}, (err, docs)=>{
+        if(!err){
+            docs.map(season=> {
+                console.log(season.name);
+                if(season.end < new Date()){
+                    console.log('this works');
+                    delete docs[docs.indexOf(season)];
+                }
+            
+        
+            })
+
+            var currentSeasons= [];
+
+            docs.map(season=>{
+                if(season!=null){
+                    currentSeasons.push(season);
+                }
+            })
+
+            res.send(currentSeasons);
+        }
+
+        else{
+            return res.statusCode(400).json({message: "Something went wrong"});
+        }
+    })
+    
 })
 
 router.post('/addseason', async (req, res)=>{

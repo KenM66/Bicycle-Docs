@@ -27,7 +27,7 @@ const ParentNavBar=()=>{
         <div className="navbar-nav ms-auto">
               
                <a className="nav-item nav-link nav-link-parent"  href="/children">Manage Children</a>
-               <a className="nav-item nav-link nav-link-parent"  href="*">Register</a>
+               <a className="nav-item nav-link nav-link-parent"  href="/lookup-school">Register</a>
                <a className="nav-item nav-link nav-link-parent"  href="*">Orders</a>
                <a className="nav-item nav-link nav-link-parent"  href="*">Account</a>
        </div>
