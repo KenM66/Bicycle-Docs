@@ -41,15 +41,30 @@ export const getSeasonById= (id)=> (dispatch, getState)=>{
 }
 
 export const createNewSeason= (season, school)=> dispatch=>{
-    dispatch({type: 'CREATE_SEASON_REQUEST'})
+    dispatch({type: 'CREATE_SEASON_REQUEST'});
 
     axios.post('http://localhost:5000/api/seasons/addseason', {season: season, school: school})
     .then(res=>{
-        dispatch({type: 'CREATE_SEASON_SUCCESS'})
+        dispatch({type: 'CREATE_SEASON_SUCCESS'});
         console.log(res);
     })
     .catch(err=>{
-        dispatch({type: 'CREATE_SEASON_FAILED'})
+        dispatch({type: 'CREATE_SEASON_FAILED'});
         console.log(err);
     })
-}   
+}  
+
+export const getActiveSeasonsParentView= (schoolId) => dispatch=>{
+    dispatch ({type: 'GET_ACTIVESEASONS_REQUEST'});
+
+    axios.get(`http://localhost:5000/api/seasons/present-seasons-by-school-id/${schoolId}`)
+    .then(res=>{
+        console.log(res);
+
+        dispatch({type: 'GET_ACTIVESEASONS_SUCCESS'});
+    })
+    .catch(err=>{
+        console.log(err);
+        dispatch({type: 'GET_ACTIVESEASONS_FAILED'});
+    })
+}
