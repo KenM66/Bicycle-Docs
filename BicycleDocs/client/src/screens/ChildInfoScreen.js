@@ -98,8 +98,7 @@ const ChildInfoScreen=()=>{
                 {(loading || bikesLoading) &&(<Loader/>)}
                 {(error && bikesError) &&(<Error/>)}
                {success && ( 
-
-                <div>
+                 <div>
                     <div style={{display: 'flex',  flexDirection: 'row', justifyContent:'center'}}>
                     <div align='left'>
                     {(image) &&(<img src= {imageSource+image}  
